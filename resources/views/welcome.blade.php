@@ -71,7 +71,7 @@
                         <li class="none-style"></li>
                         @if (Route::has('login'))
                             @auth
-                                <li><a class="nav-link" href="{{ url('/admin') }}">{{Auth::user()->name}}</a></li>
+                                <li><a class="nav-link" href="{{ route('dashboard') }}">{{Auth::user()->name}}</a></li>
                             @else
 							<li><a class="nav-link" href="{{route('login')}}">Inicio de Sesion</a></li>
                             @endauth

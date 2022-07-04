@@ -29,8 +29,10 @@
         <!-- partial:../../partials/_navbar.html -->
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <!--<a class="navbar-brand brand-logo" href="../../index-2.html"><img src="images/logo.svg" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="../../index-2.html"><img src="images/logo-mini.svg" alt="logo"/></a>-->
+                <a class="navbar-brand brand-logo" href="#"><img src="{{asset('dist/images/logo2.png')}}"
+                        alt="logo" /></a>
+                <a class="navbar-brand brand-logo-mini" href="#"><img src="{{asset('dist/images/logo2.png')}}"
+                        alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-stretch">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -39,15 +41,21 @@
                 <ul class="navbar-nav navbar-nav-right">
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                            <img src="{{ asset('dist/lab/images/faces/face5.jpg') }}" alt="profile" />
+                            <img src="{{ asset('avatar/' . Auth::user()->avatar) }}" alt="profile" />
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
                             aria-labelledby="profileDropdown">
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item">
+                            <a class="dropdown-item"
+                                onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
                                 <i class="fas fa-power-off text-primary"></i>
-                                Logout
+                                Cerrar Sesion
+
                             </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                         </div>
                     </li>
                 </ul>
@@ -62,56 +70,7 @@
             <!-- partial:../../partials/_settings-panel.html -->
             <!-- partial -->
             <!-- partial:../../partials/_sidebar.html -->
-            <nav class="sidebar sidebar-offcanvas" id="sidebar">
-                <ul class="nav">
-                    <li class="nav-item nav-profile">
-                        <div class="nav-link">
-                            <div class="profile-image">
-                                <img src="{{ asset('dist/lab/images/faces/face5.jpg') }}" alt="image" />
-                            </div>
-                            <div class="profile-name">
-                                <p class="name">
-                                    Welcome Jane
-                                </p>
-                                <p class="designation">
-                                    Super Admin
-                                </p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../../index-2.html">
-                            <i class="fa fa-home menu-icon"></i>
-                            <span class="menu-title">Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('login') }}">
-                            <i class="fa fa-home menu-icon"></i>
-                            <span class="menu-title">login</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('register') }}">
-                            <i class="fa fa-home menu-icon"></i>
-                            <span class="menu-title">register</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url('schedule')}}">
-                            <i class="fa fa-home menu-icon"></i>
-                            <span class="menu-title">Horario</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('appoiment.index')}}">
-                            <i class="fa fa-home menu-icon"></i>
-                            <span class="menu-title">Turnos</span>
-                        </a>
-                    </li>
-
-                </ul>
-            </nav>
+            @include('layouts.includes.sidebar')
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">

@@ -7,6 +7,7 @@ use App\Models\Appoiment;
 use App\Models\Exam;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Yajra\DataTables\DataTables;
 
 class AppoimentController extends Controller
 {
@@ -15,7 +16,27 @@ class AppoimentController extends Controller
         $intervals = null;
         $exams = Exam::all(['id', 'name']);
 
+
         return view('Appoiment.index', compact('intervals', 'exams'));
+    }
+
+    public function loadTable(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Appoiment::Appoiments();
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('status', function ($row) {
+                    if ($row->status === "Reservada") {
+                        $status = '<label class="badge badge-success  badge-pill">' . $row->status . '</label>';
+                    } else {
+                        $status = '<label class="badge badge-danger  badge-pill">' . $row->status . '</label>';
+                    }
+                    return $status;
+                })
+                ->rawColumns(['status'])
+                ->make(true);
+        }
     }
 
     public function store(Request $request)

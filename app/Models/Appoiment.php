@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Appoiment extends Model
 {
@@ -46,5 +47,14 @@ class Appoiment extends Model
         $data['scheduled_time'] = $carbonTime->format('H:i:s');
 
         return self::create($data);
+    }
+
+    public function scopeAppoiments($query){
+
+        return $query->join('users','users.id','=','appoiments.user_id')
+        ->join('exams','exams.id','=','appoiments.exam_id')
+        ->select("users.*",DB::raw("CONCAT(users.name,' ',users.last_name) as fullName"),'exams.name as nameExam','appoiments.*')
+        ->get();
+
     }
 }

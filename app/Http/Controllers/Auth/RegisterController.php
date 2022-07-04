@@ -70,15 +70,27 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $path = 'avatar/';
+        $fontPath = public_path('fonts/Oliciy.ttf');
+        $char = strtoupper($data['name'][0]);
+        $newAvatarName = rand(12, 34353) . time() . '_avatar.png';
+        $dest = $path . $newAvatarName;
+
+        $createAvatar = makeAvatar($fontPath, $dest, $char);
+        $picture = $createAvatar == true ? $newAvatarName : '';
+        $data['avatar'] = $picture;
+        $user = User::create([
+            'avatar' => $data['avatar'],
             'name' => $data['name'],
-            'last_name'=>$data['last_name'],
-            'address'=>$data['address'],
-            'phone'=>$data['phone'],
-            'age'=>$data['age'],
+            'last_name' => $data['last_name'],
+            'address' => $data['address'],
+            'phone' => $data['phone'],
+            'age' => $data['age'],
             'nui' => $data['nui'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        $user->assignRole('Paciente');
+        return $user;
     }
 }

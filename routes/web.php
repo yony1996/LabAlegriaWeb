@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AppoimentController;
 use App\Http\Controllers\WorkDayController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Interfaces\ScheduleServiceInterface;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -17,18 +19,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/admin', function () {
-    return view('admin');
-});
+
+
 
 Route::get('/appoiment', [AppoimentController::class, 'index'])->name('appoiment.index');
+Route::get('/appoiment/table', [AppoimentController::class, 'loadTable'])->name('loadTable');
 Route::get('/schedule', [WorkDayController::class, 'edit'])->name('schedule');
 Route::post('/schedule', [WorkDayController::class, 'store'])->name('schedule.store');
 
 Route::post('/appoiment', [AppoimentController::class, 'store'])->name('appoiment.store');
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
+Route::get('/users',[UserController::class,'index'])->name('users');
+Route::get('/users/table',[UserController::class,'loadUsers'])->name('users');
