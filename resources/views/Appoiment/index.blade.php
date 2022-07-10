@@ -164,9 +164,10 @@
                         
                         if (response.success) {
                             toastr.success(response.success);                            
+                            $('#myTable').DataTable().ajax.reload();
+                        }else{
+                            toastr.error(response.error);
                         }
-                        toastr.error(response.error);
-                        $('#myTable').DataTable().ajax.reload();
                     },
                     error: function(response) {
 

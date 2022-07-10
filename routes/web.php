@@ -33,4 +33,4 @@ Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 Route::get('/users',[UserController::class,'index'])->name('users');
-Route::get('/users/table',[UserController::class,'loadUsers'])->name('users');
+Route::get('/users/table',[UserController::class,'loadUsers']);

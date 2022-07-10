@@ -1,43 +1,43 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="card shadow">
-    <div class="card-header border-0">
-        <div class="row align-items-center">
-            <div class="col">
-                <h3 class="mb-0">Usuarios</h3>
-            </div>
-            {{-- <div class="col text-right">
+    <div class="card shadow">
+        <div class="card-header border-0">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="mb-0">Usuarios</h3>
+                </div>
+                {{-- <div class="col text-right">
                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                     data-target="#exampleModal">Obtener un turno</button>
 
             </div> --}}
+            </div>
         </div>
-    </div>
-    <div class="card-body">
-        <div class="row">
-            <div class="col-12">
-                <div class="table-responsive">
-                    <table id="myTable" class="table">
-                        <thead>
-                            <tr>
-                                <th>Cedula</th>
-                                <th>Nombre Completo</th>
-                                <th>Correo</th>
-                                <th>Telefono</th>
-                                <th>Estado</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive">
+                        <table id="myTable" class="table">
+                            <thead>
+                                <tr>
+                                    <th>Cedula</th>
+                                    <th>Nombre Completo</th>
+                                    <th>Correo</th>
+                                    <th>Telefono</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
 
-                    </table>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection
 
 @section('js')
@@ -59,7 +59,8 @@
                         url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
                     },
                     processing: true,
-                    serverSide: true,
+                    // serverSide : true,
+                    searching: true,
                     ajax: '/users/table',
                     columns: [{
                             data: 'nui',

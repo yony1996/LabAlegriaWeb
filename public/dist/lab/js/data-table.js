@@ -13,7 +13,7 @@
                 url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
             },
             processing: true,
-            serverSide: true,
+            //serverSide: true,
             ajax: '/appoiment/table',
             columns: [
             {
