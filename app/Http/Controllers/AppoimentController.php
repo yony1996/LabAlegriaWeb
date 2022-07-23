@@ -14,9 +14,7 @@ class AppoimentController extends Controller
     public function index()
     {
         $intervals = null;
-        $exams = Exam::all(['id', 'name']);
-
-
+        $exams = Exam::where('status', 1)->select(['id', 'name'])->get();
         return view('Appoiment.index', compact('intervals', 'exams'));
     }
 

@@ -52,7 +52,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'address' => ['required', 'string', 'max:255'],
+            'gender' => ['required', 'string'],
             'phone' => ['required', 'string', 'max:255'],
             'age' => ['required', 'string', 'max:255'],
             'nui' => ['required', 'string', 'max:10', 'min:10'],
@@ -73,17 +73,18 @@ class RegisterController extends Controller
         $path = 'avatar/';
         $fontPath = public_path('fonts/Oliciy.ttf');
         $char = strtoupper($data['name'][0]);
-        $newAvatarName = rand(12, 34353) . time() . '_avatar.png';
+        $newAvatarName = rand(12, 34353) . time() .'_'. $data['last_name'] . '_avatar.png';
         $dest = $path . $newAvatarName;
 
         $createAvatar = makeAvatar($fontPath, $dest, $char);
         $picture = $createAvatar == true ? $newAvatarName : '';
         $data['avatar'] = $picture;
+    
         $user = User::create([
             'avatar' => $data['avatar'],
             'name' => $data['name'],
             'last_name' => $data['last_name'],
-            'address' => $data['address'],
+            'gender' => $data['gender'],
             'phone' => $data['phone'],
             'age' => $data['age'],
             'nui' => $data['nui'],

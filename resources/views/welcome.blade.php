@@ -61,13 +61,11 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbar-wd">
                     <ul class="navbar-nav">
-                        <li><a class="nav-link active" href="#home">Home</a></li>
-                        <li><a class="nav-link" href="#about">About Us</a></li>
-                        <li><a class="nav-link" href="#services">Services</a></li>
-                        <li><a class="nav-link" href="#appointment">Appointment</a></li>
-                        <li><a class="nav-link" href="#gallery">Gallery</a></li>
-                        <li><a class="nav-link" href="#team">Doctor</a></li>
-                        <li><a class="nav-link" href="#address">Address</a></li>
+                        <li><a class="nav-link active" href="#home">Inicio</a></li>
+                        <li><a class="nav-link" href="#about">Nosotros</a></li>
+                        <li><a class="nav-link" href="#services">Servicios</a></li>
+                        <li><a class="nav-link" href="#team">Nuestro Equipo</a></li>
+                        <li><a class="nav-link" href="#address">Direcciòn</a></li>
                         <li class="none-style"></li>
                         @if (Route::has('login'))
                             @auth
@@ -92,9 +90,9 @@
                         style="background-image:url(dist/images/slider-01.jpg);">
                         <div class="lbox-caption pogoSlider-slide-element">
                             <div class="lbox-details">
-                                <h1>Welcome to Health Lab</h1>
-                                <p>Fusce convallis ante id purus sagittis malesuada. Sed erat ipsum </p>
-                                <a href="#" class="btn">Contact Us</a>
+                                <h1>Bienvenido a tu laboratorio</h1>
+                                <p>Sientete seguro con nuestros resultados</p>
+                                <a href="#" class="btn">Contactanos</a>
                             </div>
                         </div>
                     </div>
@@ -102,22 +100,21 @@
                         style="background-image:url(dist/images/slider-02.jpg);">
                         <div class="lbox-caption pogoSlider-slide-element">
                             <div class="lbox-details">
-                                <h1>We are Expert in The Field of Health Lab</h1>
-                                <p>Fusce convallis ante id purus sagittis malesuada. Sed erat ipsum</p>
-                                <a href="#appointment" class="btn">Appointment</a>
+                                <h1>Seras atendido por nuestros especialistas</h1>
+                                <p>Contamos con equipo calificado para realizar tus analisis</p>
+                                <a href="#appointment" class="btn">Obten un turno</a>
                             </div>
                         </div>
                     </div>
                     <div class="pogoSlider-slide" data-transition="fade" data-duration="1500"
-                        style="background-image:url(dist/images/slider-03.jpg);">
+                        style="background-image:url(dist/images/slider-01.jpg);">
                         <div class="lbox-caption pogoSlider-slide-element">
                             <div class="lbox-details">
-                                <h1>Welcome to Health Lab</h1>
-                                <p>Fusce convallis ante id purus sagittis malesuada. Sed erat ipsum </p>
-                                <a href="#" class="btn">Contact Us</a>
+                                <h1>Bienvenido a tu laboratorio</h1>
+                                <p>Sientete seguro con nuestros resultados</p>
+                                <a href="#" class="btn">Contactanos</a>
                             </div>
                         </div>
-
                     </div>
                 </div><!-- .pogoSlider -->
             </div>
@@ -132,8 +129,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="title-box">
-                            <h2>About Us</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                            <h2>Nosotros</h2>
+                            <p></p>
                         </div>
                     </div>
                 </div>
@@ -141,18 +138,12 @@
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="row align-items-center about-main-info">
                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                <h2> Welcome to Health Lab </h2>
+                                <h2>Bienvenido al laboratorio Alegria </h2>
                                 <p>Fusce convallis ante id purus sagittis malesuada. Sed erat ipsum, suscipit sit amet
                                     auctor quis, vehicula ut leo. Maecenas felis nulla, tincidunt ac blandit a,
                                     consectetur quis elit. Nulla ut magna eu purus cursus sagittis. Praesent fermentum
                                     tincidunt varius. Proin sit amet tempus magna. Fusce pellentesque vulputate urna.
                                 </p>
-                                <p>Fusce convallis ante id purus sagittis malesuada. Sed erat ipsum, suscipit sit amet
-                                    auctor quis, vehicula ut leo. Maecenas felis nulla, tincidunt ac blandit a,
-                                    consectetur quis elit. Nulla ut magna eu purus cursus sagittis. Praesent fermentum
-                                    tincidunt varius. Proin sit amet tempus magna. Fusce pellentesque vulputate urna.
-                                </p>
-                                <a href="#" class="new-btn-d br-2">Read More</a>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="about-m">
@@ -183,8 +174,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="title-box">
-                        <h2>Services</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                        <h2>Servicios</h2>
                     </div>
                 </div>
             </div>
@@ -288,122 +278,6 @@
         </div>
     </div>
     <!-- End Services -->
-
-    <!-- Start Appointment -->
-    <div id="appointment" class="appointment-main">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="title-box">
-                        <h2>Appointment</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6 col-md-6">
-                    <div class="well-block">
-                        <div class="well-title">
-                            <h2>Book an Appointment</h2>
-                        </div>
-                        <form>
-                            <!-- Form start -->
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label" for="name">Name</label>
-                                        <input id="name" name="name" type="text" placeholder="Name"
-                                            class="form-control input-md">
-                                    </div>
-                                </div>
-                                <!-- Text input-->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label" for="email">Email</label>
-                                        <input id="email" name="email" type="text" placeholder="E-Mail"
-                                            class="form-control input-md">
-                                    </div>
-                                </div>
-                                <!-- Text input-->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label" for="date">Preferred Date</label>
-                                        <input id="date" name="date" type="text"
-                                            placeholder="Preferred Date" class="form-control input-md">
-                                    </div>
-                                </div>
-                                <!-- Select Basic -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label" for="time">Preferred Time</label>
-                                        <select id="time" name="time" class="form-control">
-                                            <option value="8:00 to 9:00">8:00 to 9:00</option>
-                                            <option value="9:00 to 10:00">9:00 to 10:00</option>
-                                            <option value="10:00 to 1:00">10:00 to 1:00</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <!-- Select Basic -->
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="control-label" for="appointmentfor">Department</label>
-                                        <select id="appointmentfor" name="appointmentfor" class="form-control">
-                                            <option value="Choose Department">Choose Department</option>
-                                            <option value="Gynacology">Gynacology</option>
-                                            <option value="Dermatologist">Dermatologist</option>
-                                            <option value="Orthology">Orthology</option>
-                                            <option value="Anesthesiology">Anesthesiology</option>
-                                            <option value="Ayurvedic">Ayurvedic</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <!-- Button -->
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <button id="singlebutton" name="singlebutton" class="new-btn-d br-2">Make An
-                                            Appointment</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                        <!-- form end -->
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="well-block">
-                        <div class="well-title">
-                            <h2>Why Appointment with Us</h2>
-                        </div>
-                        <div class="feature-block">
-                            <div class="feature feature-blurb-text">
-                                <h4 class="feature-title">24/7 Hours Available</h4>
-                                <div class="feature-content">
-                                    <p>Integer nec nisi sed mi hendrerit mattis. Vestibulum mi nunc, ultricies quis
-                                        vehicula et, iaculis in magnestibulum.</p>
-                                </div>
-                            </div>
-                            <div class="feature feature-blurb-text">
-                                <h4 class="feature-title">Experienced Staff Available</h4>
-                                <div class="feature-content">
-                                    <p>Aliquam sit amet mi eu libero fermentum bibendum pulvinar a turpis. Vestibulum
-                                        quis feugiat risus. </p>
-                                </div>
-                            </div>
-                            <div class="feature feature-blurb-text">
-                                <h4 class="feature-title">Low Price & Fees</h4>
-                                <div class="feature-content">
-                                    <p>Praesent eu sollicitudin nunc. Cras malesuada vel nisi consequat pretium. Integer
-                                        auctor elementum nulla suscipit in.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Appointment -->
-
     <!-- Start Gallery -->
     <div id="gallery" class="gallery-box">
         <div class="container-fluid">

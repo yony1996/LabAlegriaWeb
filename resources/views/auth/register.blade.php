@@ -46,15 +46,15 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label>Direccion</label>
+                <label>Sexo</label>
                 <div class="input-group">
-                    <input type="text" name="address"
+                    <input type="text" name="gender"
                         class="form-control form-control-lg"
-                        value="{{old('address')}}"
-                        placeholder="Direccion">
+                        value="{{old('gender')}}"
+                        placeholder="Sexo">
 
                 </div>
-                @error('address')
+                @error('gender')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>

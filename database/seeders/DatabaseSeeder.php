@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(10)->create();
         $this->call(PermissionTableSeeder::class); //php artisan migrate --seed
+        $this->call(ExamTableSeeder::class);
     }
 }

@@ -21,16 +21,16 @@ class PermissionTableSeeder extends Seeder
         $role1 = Role::create(['name' => 'Admin']);
         $role2 = Role::create(['name' => 'Bioquimico']);
         $role3 = Role::create(['name' => 'Paciente']);
-        $user_password = Hash::make('1234345678');
+        $user_password = Hash::make('12345678');
         
         
         $admin = User::create([
-            'nui'=>'0123456789',
+            'nui'=>'0783456789',
             'age'=>'26',
             'name' => 'admin',
             'last_name' => 'admin',
             'phone'=>'0123456789',
-            'address'=>'quito',
+            'gender'=>'M-F',
             'email' => 'admin@gmail.com',
             'email_verified_at' => now(),
             'status'=>1,
@@ -38,12 +38,12 @@ class PermissionTableSeeder extends Seeder
             
         ]);
         $bioq = User::create([
-            'nui'=>'0123456789',
+            'nui'=>'0223456789',
             'age'=>'26',
             'name' => 'Bioquimico',
             'last_name' => 'bioquimico',
             'phone'=>'0123456789',
-            'address'=>'quito',
+            'gender'=>'M-F',
             'email' => 'bioquimico@gmail.com',
             'email_verified_at' => now(),
             'status'=>1,
@@ -51,12 +51,12 @@ class PermissionTableSeeder extends Seeder
             
         ]);
         $paciente = User::create([
-            'nui'=>'0123456789',
+            'nui'=>'0125478968',
             'age'=>'26',
             'name' => 'Paciente',
             'last_name' => 'paciente',
             'phone'=>'0123456789',
-            'address'=>'quito',
+            'gender'=>'M-F',
             'email' => 'paciente@gmail.com',
             'email_verified_at' => now(),
             'status'=>1,

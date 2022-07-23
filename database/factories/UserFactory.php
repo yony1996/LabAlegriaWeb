@@ -20,7 +20,7 @@ class UserFactory extends Factory
             'name' => $this->faker->name(),
             'last_name' => $this->faker->lastName(),
             'phone'=>$this->faker->numerify('##########'),
-            'address'=>$this->faker->sentence(),
+            'gender'=>'M-F',
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'status'=>1,

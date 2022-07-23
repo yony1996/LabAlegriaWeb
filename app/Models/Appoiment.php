@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class Appoiment extends Model
@@ -49,12 +50,21 @@ class Appoiment extends Model
         return self::create($data);
     }
 
-    public function scopeAppoiments($query){
-
-        return $query->join('users','users.id','=','appoiments.user_id')
-        ->join('exams','exams.id','=','appoiments.exam_id')
-        ->select("users.*",DB::raw("CONCAT(users.name,' ',users.last_name) as fullName"),'exams.name as nameExam','appoiments.*')
-        ->get();
-
+    public function scopeAppoiments($query)
+    {
+        $role = Auth::user()->getRoleNames()->first();
+        if ($role === 'Paciente') {
+            $query = Appoiment::join('users', 'users.id', '=', 'appoiments.user_id')
+                ->join('exams', 'exams.id', '=', 'appoiments.exam_id')
+                ->where('user_id', '=', Auth::user()->id)
+                ->select("users.*", DB::raw("CONCAT(users.name,' ',users.last_name) as fullName"), 'exams.name as nameExam', 'appoiments.*')
+                ->get();
+        } else {
+            $query = Appoiment::join('users', 'users.id', '=', 'appoiments.user_id')
+                ->join('exams', 'exams.id', '=', 'appoiments.exam_id')
+                ->select("users.*", DB::raw("CONCAT(users.name,' ',users.last_name) as fullName"), 'exams.name as nameExam', 'appoiments.*')
+                ->get();
+        }
+        return $query;
     }
 }

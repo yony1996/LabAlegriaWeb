@@ -12,11 +12,13 @@
                 <div class="col">
                     <h3 class="mb-0">Turnos</h3>
                 </div>
+                @hasrole('Paciente')
                 <div class="col text-right">
                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                         data-target="#exampleModal">Obtener un turno</button>
 
                 </div>
+                @endrole
             </div>
         </div>
         <div class="card-body">
