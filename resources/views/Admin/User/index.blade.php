@@ -267,7 +267,7 @@
                             name: 'Cedula'
                         },
                         {
-                            data: 'fullName',
+                            data: 'fullname',
                             name: 'Nombre Completo'
                         },
                         {

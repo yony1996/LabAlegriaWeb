@@ -35,7 +35,8 @@ class User extends Authenticatable
 
     public function scopeUsers($query)
     {
-        return $query->select("users.*",DB::raw("CONCAT(users.name,' ',users.last_name) as fullName"))->get();
+       // return $query->select("users.*",DB::raw("CONCAT(users.name,' ',users.last_name) as fullName"))->get(); //mysql
+       return $query->select("users.*",DB::raw("CONCAT(users.name,' ',users.last_name) as fullname"))->get();//postgrest
     }
     /**
      * The attributes that should be hidden for serialization.
