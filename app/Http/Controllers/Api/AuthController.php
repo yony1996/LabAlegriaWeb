@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -12,46 +13,64 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
-        if (!Auth::attempt($request->only('email', 'password'))) {
-            return response()->json([
-                'message' => 'Login information is invalid.'
-            ], 401);
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            $passport =  $user->createToken(env('APP_NAME'))->accessToken;
+            $rol = $user->getRoleNames()->first();
+            $success = true;
+
+            $user = Arr::add($user, 'rol', $rol);
+
+            $data = compact('success', 'user', 'passport');
+            return $data;
+        } else {
+            $success = false;
+            $message = 'algo ha fallado';
+            return compact('success', 'message');
         }
-
-        $user = User::where('email', $request['email'])->firstOrFail();
-        $token = $user->createToken('authToken')->plainTextToken;
-
-        return response()->json([
-            'access_token' => $token,
-            'token_type' => 'Bearer',
-            'user' => $user,
-        ]);
     }
-
     public function register(Request $request)
     {
+        $rules = [
+            'name' => ['required', 'string', 'max:50'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8'],
+        ];
+        $this->validate($request, $rules);
 
         $user = User::create([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'password' => Hash::make($request['password']),
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
         ]);
-        $user->assignRole('paciente');
-        $token = $user->createToken('authToken')->plainTextToken;
+        $user->assignRole('Paciente');
 
-        return response()->json([
-            'access_token' => $token,
-            'token_type' => 'Bearer',
-            'user'=> $user,
-        ]);
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            $passport =  $user->createToken(env('APP_NAME'))->accessToken;
+            $rol = $user->getRoleNames()->first();
+            $success = true;
+
+            $user = Arr::add($user, 'rol', $rol);
+
+            $data = compact('success', 'user', 'passport');
+            return $data;
+        }
+        $success = false;
+        $message = 'Ocurrio un error al loguearse';
+        $data = compact('success', 'message');
+        return $data;
     }
 
     public function logout(Request $request)
     {
-        $request->user()->tokens()->delete();
-        return [
-            'message' => 'user logged out'
-        ];
-
+        $accessToken = Auth::user()->token();
+        $token = $request->user()->tokens->find($accessToken);
+        $token->revoke();
+        $success = true;
+        $message = 'se ha cerradon con éxito';
+        return compact('success', 'message');
     }
 }

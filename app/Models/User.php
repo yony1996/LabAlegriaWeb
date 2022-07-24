@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
-use Laravel\Sanctum\HasApiTokens;
+use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
@@ -46,7 +46,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'roles','created_at',
+        'updated_at','email_verified_at','delete_at'
     ];
+    
 
     /**
      * The attributes that should be cast.
