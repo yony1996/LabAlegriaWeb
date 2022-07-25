@@ -1079,7 +1079,7 @@ button:focus{
 -------------------------------------------------------------------*/
 
 .team-box{
-	padding: 70px 0px;
+	padding: 0px 0px;
 }
 
 .our-team{
@@ -1088,7 +1088,7 @@ button:focus{
     position: relative;
     z-index: 1;
 }
-.our-team:before,
+/*.our-team:before,
 .our-team:after{
     content: "";
     width: 130px;
@@ -1105,14 +1105,14 @@ button:focus{
 .our-team:after{
     bottom: 0px;
     right: 0;
-}
+}*/
 .our-team .pic{
     margin: 8px;
     position: relative;
     border: 3px solid #164b6d;
     transition: all 0.5s ease 0s;
 }
-.our-team:hover .pic{
+/*.our-team:hover .pic{
     border-color: #12557f;
 }
 .our-team .pic:after{
@@ -1130,7 +1130,7 @@ button:focus{
 .our-team:hover .pic:after{
     height: 100%;
     opacity: 0.85;
-}
+}*/
 .our-team img{
     width: 100%;
     height: auto;
@@ -1269,7 +1269,7 @@ button:focus{
 -------------------------------------------------------------------*/
 
 .contact-box{
-	padding: 70px 0px;
+	padding: 200px;
 }
 
 .left-contact{

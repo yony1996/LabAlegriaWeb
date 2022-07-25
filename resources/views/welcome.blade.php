@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="{{ asset('dist/css/responsive.css') }}">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('dist/css/custom.css') }}">
-
+    <link rel="stylesheet" href="{{ asset('dist/lab/css/venom-button.min.css') }}">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -64,14 +64,15 @@
                         <li><a class="nav-link active" href="#home">Inicio</a></li>
                         <li><a class="nav-link" href="#about">Nosotros</a></li>
                         <li><a class="nav-link" href="#services">Servicios</a></li>
+                        <li><a class="nav-link" href="#gallery">Ubicación</a></li>
                         <li><a class="nav-link" href="#team">Nuestro Equipo</a></li>
-                        <li><a class="nav-link" href="#address">Direcciòn</a></li>
+                        <li><a class="nav-link" href="#contact">Contactos</a></li>
                         <li class="none-style"></li>
                         @if (Route::has('login'))
                             @auth
-                                <li><a class="nav-link" href="{{ route('dashboard') }}">{{Auth::user()->name}}</a></li>
+                                <li><a class="nav-link" href="{{ route('dashboard') }}">{{ Auth::user()->name }}</a></li>
                             @else
-							<li><a class="nav-link" href="{{route('login')}}">Inicio de Sesion</a></li>
+                                <li><a class="nav-link" href="{{ route('login') }}">Inicio de Sesion</a></li>
                             @endauth
                         @endif
                     </ul>
@@ -87,7 +88,7 @@
             <div class="row">
                 <div class="pogoSlider" id="js-main-slider">
                     <div class="pogoSlider-slide" data-transition="fade" data-duration="1500"
-                        style="background-image:url(dist/images/slider-01.jpg);">
+                        style="background-image:url(dist/images/banner_2.jpeg);">
                         <div class="lbox-caption pogoSlider-slide-element">
                             <div class="lbox-details">
                                 <h1>Bienvenido a tu laboratorio</h1>
@@ -97,7 +98,7 @@
                         </div>
                     </div>
                     <div class="pogoSlider-slide" data-transition="fade" data-duration="1500"
-                        style="background-image:url(dist/images/slider-02.jpg);">
+                        style="background-image:url(dist/images/banner_1.jpeg);">
                         <div class="lbox-caption pogoSlider-slide-element">
                             <div class="lbox-details">
                                 <h1>Seras atendido por nuestros especialistas</h1>
@@ -107,7 +108,7 @@
                         </div>
                     </div>
                     <div class="pogoSlider-slide" data-transition="fade" data-duration="1500"
-                        style="background-image:url(dist/images/slider-01.jpg);">
+                        style="background-image:url(dist/images/banner_3.jpeg);">
                         <div class="lbox-caption pogoSlider-slide-element">
                             <div class="lbox-details">
                                 <h1>Bienvenido a tu laboratorio</h1>
@@ -139,25 +140,15 @@
                         <div class="row align-items-center about-main-info">
                             <div class="col-lg-6 col-md-6 col-sm-12">
                                 <h2>Bienvenido al laboratorio Alegria </h2>
-                                <p>Fusce convallis ante id purus sagittis malesuada. Sed erat ipsum, suscipit sit amet
-                                    auctor quis, vehicula ut leo. Maecenas felis nulla, tincidunt ac blandit a,
-                                    consectetur quis elit. Nulla ut magna eu purus cursus sagittis. Praesent fermentum
-                                    tincidunt varius. Proin sit amet tempus magna. Fusce pellentesque vulputate urna.
+                                <p>Somos el laboratorio alegría velamos por la salud y el bienestar de nuestros
+                                    pacientes brindando un servicio de calidad con profesionales especializados en
+                                    bioquímica clínica sus análisis serán realizados con dedicación y responsabilidad
+                                    haciendo a nuestros pacientes nuestra prioridad.
                                 </p>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="about-m">
-                                    <ul id="banner">
-                                        <li>
-                                            <img src="{{ asset('dist/images/about-img-01.jpg') }}" alt="">
-                                        </li>
-                                        <li>
-                                            <img src="{{ asset('dist/images/about-img-02.jpg') }}" alt="">
-                                        </li>
-                                        <li>
-                                            <img src="{{ asset('dist/images/about-img-03.jpg') }}" alt="">
-                                        </li>
-                                    </ul>
+                                    <img src="{{ asset('dist/images/nosotros.jpeg') }}" alt="">
                                 </div>
                             </div>
                         </div>
@@ -285,11 +276,9 @@
                 <div class="col-lg-12">
                     <div class="title-box">
                         <h2>Nuestra ubicación</h2>
-                        <p>Visitanos en esta dirección.</p>
                     </div>
                 </div>
             </div>
-
             <div class="popup-gallery row clearfix">
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d127673.27672509612!2d-78.5022976!3d-0.21626879999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sec!4v1653346745837!5m2!1sen!2sec"
@@ -306,8 +295,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="title-box">
-                        <h2>Our Doctor</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                        <h2>Bioquimicos</h2>
                     </div>
                 </div>
             </div>
@@ -315,36 +303,16 @@
             <div class="row">
                 <div class="col-md-6 col-sm-6">
                     <div class="our-team">
-                        <div class="pic">
+                        <div class="pic" style="width: 70%; height:70%;">
                             <img src="{{ asset('dist/images/medico2.png') }}" alt="">
-                        </div>
-                        <div class="team-content">
-                            <h3 class="title">Williamson</h3>
-                            <span class="post">web developer</span>
-                            <ul class="social">
-                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
-                            </ul>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-6 col-sm-6">
                     <div class="our-team">
-                        <div class="pic">
+                        <div class="pic" style="width: 70%; height:70%;">
                             <img src="{{ asset('dist/images/medico.png') }}" alt="">
-                        </div>
-                        <div class="team-content">
-                            <h3 class="title">kristina</h3>
-                            <span class="post">Web Designer</span>
-                            <ul class="social">
-                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
-                            </ul>
                         </div>
                     </div>
                 </div>
@@ -356,19 +324,18 @@
     <!-- End Team -->
 
     <!-- Start Contact -->
-    <div id="address" class="contact-box">
+    <div id="contact" class="contact-box">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-xs-12">
                     <div class="left-contact">
-                        <h2>Address</h2>
+                        <h2>Contactanos</h2>
                         <div class="media cont-line">
                             <div class="media-left icon-b">
                                 <i class="fa fa-location-arrow" aria-hidden="true"></i>
                             </div>
                             <div class="media-body dit-right">
-                                <h4>Address</h4>
-                                <p>Fleming 196 Woodside Circle Mobile, FL 36602</p>
+                                <h4>Contactos</h4>
                             </div>
                         </div>
                         <div class="media cont-line">
@@ -399,7 +366,7 @@
         </div>
     </div>
     <!-- End Contact -->
-
+    <div id="myDiv"></div>
     <!-- Start Footer -->
     <footer class="footer-box">
         <div class="container">
@@ -413,12 +380,13 @@
     </footer>
     <!-- End Footer -->
 
-    <a href="#" id="scroll-to-top" class="new-btn-d br-2"><i class="fa fa-angle-up"></i></a>
+    {{-- <a href="#" id="scroll-to-top" class="new-btn-d br-2"><i class="fa fa-angle-up"></i></a> --}}
 
     <!-- ALL JS FILES -->
     <script src="{{ asset('dist/js/jquery.min.js') }}"></script>
     <script src="{{ asset('dist/js/popper.min.js') }}"></script>
     <script src="{{ asset('dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('dist/lab/js/venom-button.min.js') }}"></script>
     <!-- ALL PLUGINS -->
     <script src="{{ asset('dist/js/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('dist/js/jquery.pogo-slider.min.js') }}"></script>
@@ -432,6 +400,22 @@
     <script src="{{ asset('dist/js/isotope.min.js') }}"></script>
     <script src="{{ asset('dist/js/images-loded.min.js') }}"></script>
     <script src="{{ asset('dist/js/custom.js') }}"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('#myDiv').venomButton({
+                phone: '593962692469',
+                message: "Hola, deseo reservar un turno",
+                chatMessage: 'Hola 👋<br><br>Como te posdemos ayudar?',
+                showPopup: true,
+                avatar: '',
+                position: "right",
+                linkButton: false,
+                showOnIE: false,
+                nameClient: "Laboratorio Alegria",
+                headerTitle: 'Online',
+            });
+        });
+    </script>
 </body>
 
 </html>

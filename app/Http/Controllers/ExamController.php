@@ -26,15 +26,15 @@ class ExamController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    if($row->status == 1){
-                        $btn = '<button class="btn" id ="statusExam" data-id="' . $row->id . '" data-status="' . $row->status . '">Desactivar</button>';    
-                    }else{
-                        $btn = '<button class="btn" id ="statusExam" data-id="' . $row->id . '" data-status="' . $row->status . '">Activar</button>';
+                    if ($row->status == 1) {
+                        $btn = '<button class="btn btn-warning m-2" id ="statusExam" data-id="' . $row->id . '" data-status="' . $row->status . '"><i class="fa fa-ban"></i></button>';
+                    } else {
+                        $btn = '<button class="btn btn-success m-2" id ="statusExam" data-id="' . $row->id . '" data-status="' . $row->status . '"><i class="fa fa-check-circle"></i></button>';
                     }
-                    
-                    $btn = $btn . '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">Editar</a>';
 
-                    $btn = $btn . '<button class="btn" id ="deleteExam" data-id="' . $row->id . '">Delete</button>';
+                    $btn = $btn . '<a href=' . route("user.edit", $row->id) . ' class="edit btn btn-primary btn-sm m-2"><i class="fa fa-pen"></i></a>';
+
+                    $btn = $btn . '<button class="btn btn-danger m-2" id ="deleteUser" data-id="' . $row->id . '"><i class="fa fa-trash"></i></button>';
                     return $btn;
                 })
                 ->addColumn('status', function ($row) {
@@ -81,5 +81,10 @@ class ExamController extends Controller
         }
         return response()->json(['success'=>$status]);
         
+    }
+
+    public function create(Request $request)
+    {
+        return view('Admin.Exams.create');
     }
 }
