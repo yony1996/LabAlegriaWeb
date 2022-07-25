@@ -77,7 +77,7 @@
                     <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{route('exam')}}">Gestionar Examenes</a>
                     </li>
                     @endrole
-                    <li class="nav-item"> <a class="nav-link" href="#">Crear resultados</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{route('exam.create')}}">Crear resultados</a></li>
                     <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="#">Ver resultados</a></li>
                 </ul>
             </div>
