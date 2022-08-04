@@ -191,7 +191,7 @@
                     //serverSide: true,
                     ajax: '/appoiment/table',
                     columns: [{
-                            data: 'fullName',
+                            data: 'fullname',
                             name: 'Paciente'
                         },
                         {

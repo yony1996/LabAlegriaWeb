@@ -62,7 +62,7 @@ class Appoiment extends Model
         } else {
             $query = Appoiment::join('users', 'users.id', '=', 'appoiments.user_id')
                 ->join('exams', 'exams.id', '=', 'appoiments.exam_id')
-                ->select("users.*", DB::raw("CONCAT(users.name,' ',users.last_name) as fullName"), 'exams.name as nameExam', 'appoiments.*')
+                ->select("users.*", DB::raw("CONCAT(users.name,' ',users.last_name) as fullname"), 'exams.name as nameExam', 'appoiments.*')
                 ->get();
         }
         return $query;
