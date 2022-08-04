@@ -50,7 +50,10 @@ class User extends Authenticatable
         'updated_at','email_verified_at','deleted_at'
     ];
     
-
+    public function appoiment()
+    {
+        return $this->hasMany(Appoiment::class, 'user_id');
+    }
     /**
      * The attributes that should be cast.
      *

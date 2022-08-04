@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AppoimentController;
 use App\Http\Controllers\ExamController;
+use App\Http\Controllers\GenericController;
 use App\Http\Controllers\WorkDayController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -24,7 +25,9 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
+Route::get('/generic',function(){
+    return view('table.generic');
+});
 Route::middleware('auth')->group(function () {
     Route::get('/appoiment', [AppoimentController::class, 'index'])->name('appoiment.index');
     Route::get('/appoiment/table', [AppoimentController::class, 'loadTable'])->name('loadTable');
@@ -44,4 +47,5 @@ Route::middleware('auth')->group(function () {
     Route::delete('/exams/{exam}', [ExamController::class, 'destroy']);
     Route::put('/exams/{exam}/status', [ExamController::class, 'changeStatus']);
     Route::get('/exam/create',[ExamController::class,'create'])->name('exam.create');
+    Route::get('/table/generic',[GenericController::class,'loadTables'])->name('generic.table');
 });

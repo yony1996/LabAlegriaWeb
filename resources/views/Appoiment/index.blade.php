@@ -13,11 +13,11 @@
                     <h3 class="mb-0">Turnos</h3>
                 </div>
                 @hasrole('Paciente')
-                <div class="col text-right">
-                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
-                        data-target="#exampleModal">Obtener un turno</button>
+                    <div class="col text-right">
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                            data-target="#exampleModal">Obtener un turno</button>
 
-                </div>
+                    </div>
                 @endrole
             </div>
         </div>
@@ -140,11 +140,11 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('dist/lab/js/data-table.js') }}"></script>
+    {{-- <script src="{{ asset('dist/lab/js/data-table.js') }}"></script> --}}
     <script src="{{ asset('dist/lab/js/modal-demo.js') }}"></script>
     <script src="{{ asset('dist/lab/js/datepicker-es.js') }}"></script>
     <script src="{{ asset('Appoimens/appoiments.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script> --}}
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>
@@ -163,18 +163,70 @@
                         $("#form").trigger("reset");
                         $('#exampleModal').hide();
                         $('.fade').hide();
-                        
+
                         if (response.success) {
-                            toastr.success(response.success);                            
+                            toastr.success(response.success);
                             $('#myTable').DataTable().ajax.reload();
-                        }else{
+                        } else {
                             toastr.error(response.error);
                         }
                     },
-                    error: function(response) {
+                });
+            });
 
-                        toastr.error(response.error);
-                    }
+            //load table
+            $(function() {
+                $("#myTable").DataTable({
+
+                    aLengthMenu: [
+                        [5, 10, 15, -1],
+                        [5, 10, 15, "All"],
+                    ],
+                    iDisplayLength: 10,
+                    language: {
+                        search: "",
+                        url: "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                    },
+                    processing: true,
+                    //serverSide: true,
+                    ajax: '/appoiment/table',
+                    columns: [{
+                            data: 'fullName',
+                            name: 'Paciente'
+                        },
+                        {
+                            data: 'nameExam',
+                            name: 'Examen'
+                        },
+                        {
+                            data: 'scheduled_date',
+                            name: 'Fecha'
+                        },
+                        {
+                            data: 'scheduled_time',
+                            name: 'Hora'
+                        },
+                        {
+                            data: 'status',
+                            name: 'Estado'
+                        },
+
+                    ]
+
+                });
+                $("#myTable").each(function() {
+                    var datatable = $(this);
+                    // SEARCH - Add the placeholder for Search and Turn this into in-line form control
+                    var search_input = datatable
+                        .closest(".dataTables_wrapper")
+                        .find("div[id$=_filter] input");
+                    search_input.attr("placeholder", "Search");
+                    search_input.removeClass("form-control-sm");
+                    // LENGTH - Inline-Form control
+                    var length_sel = datatable
+                        .closest(".dataTables_wrapper")
+                        .find("div[id$=_length] select");
+                    length_sel.removeClass("form-control-sm");
                 });
             });
 

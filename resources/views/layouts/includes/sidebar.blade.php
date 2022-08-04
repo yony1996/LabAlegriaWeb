@@ -65,6 +65,12 @@
         @endhasrole
         @hasrole('Bioquimico')
         <li class="nav-item">
+            <a class="nav-link" href="{{ route('generic.table') }}">
+                <i class="fa fa-tasks menu-icon"></i>
+                <span class="menu-title">Turnos</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link collapsed" data-toggle="collapse" href="#page-layouts" aria-expanded="false"
                 aria-controls="page-layouts">
                 <i class="fa fa-flask menu-icon"></i>

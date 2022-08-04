@@ -20,6 +20,7 @@ class AppoimentController extends Controller
 
     public function loadTable(Request $request)
     {
+
         if ($request->ajax()) {
             $data = Appoiment::Appoiments();
             return DataTables::of($data)
@@ -32,7 +33,7 @@ class AppoimentController extends Controller
                     }
                     return $status;
                 })
-                ->rawColumns(['status'])
+                ->rawColumns(['status', 'action'])
                 ->make(true);
         }
     }

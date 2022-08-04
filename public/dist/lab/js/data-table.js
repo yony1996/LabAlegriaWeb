@@ -36,6 +36,7 @@
                 data: 'status',
                 name: 'Estado'
             },
+
             ]
 
         });
