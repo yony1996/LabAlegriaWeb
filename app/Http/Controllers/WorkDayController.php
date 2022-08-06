@@ -32,7 +32,6 @@ class WorkDayController extends Controller
             }
         }
 
-        //dd($workDays->toArray());
         $days = $this->days;
         return view('Admin.Schedule.schedule', compact('days', 'workDays'));
     }

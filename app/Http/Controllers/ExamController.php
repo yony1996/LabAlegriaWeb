@@ -19,6 +19,22 @@ class ExamController extends Controller
         return view('Admin.Exams.index');
     }
 
+    public function edit($id)
+    {
+        $exam = Exam::findOrfail($id);
+        return view('Admin.Exams.edit', compact('exam'));
+    }
+
+    public function update(Request $request,$id){
+        $rules = [
+            'name' => 'required', 'string', 'max:255',
+            'description' => 'sometimes', 'string',
+        ];
+        $this->validate($request, $rules);
+        Exam::find($id)->update($request->all());
+        return redirect()->route('exam')->with('status', 'Examen editado correctamente.');
+    }
+
     public function loadExams(Request $request)
     {
         if ($request->ajax()) {
@@ -32,7 +48,7 @@ class ExamController extends Controller
                         $btn = '<button class="btn btn-success m-2" id ="statusExam" data-id="' . $row->id . '" data-status="' . $row->status . '"><i class="fa fa-check-circle"></i></button>';
                     }
 
-                    $btn = $btn . '<a href=' . route("user.edit", $row->id) . ' class="edit btn btn-primary btn-sm m-2"><i class="fa fa-pen"></i></a>';
+                    $btn = $btn . '<a href=' . route("exam.edit", $row->id) . ' class="edit btn btn-primary btn-sm m-2"><i class="fa fa-pen"></i></a>';
 
                     $btn = $btn . '<button class="btn btn-danger m-2" id ="deleteUser" data-id="' . $row->id . '"><i class="fa fa-trash"></i></button>';
                     return $btn;

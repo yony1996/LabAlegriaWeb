@@ -6,7 +6,7 @@
             <h4 class="card-title">Editar Usuario</h4>
             <form id="form" method="POST" action="{{ route('user.update', $user->id) }}">
                 @csrf
-                @method('PUT')
+                @method('PATCH')
                 <div class="form-group row">
                     <div class="col">
                         <label>Nombre</label>
@@ -48,11 +48,11 @@
                     </div>
                     <div class="col">
                         <label>Sexo</label>
-                        <div class="input-group">
-                            <input type="text" name="gender" class="form-control form-control-lg"
-                                value="{{ old('gender', $user->gender) }}" placeholder="Sexo">
-
-                        </div>
+                        <select class="form-control" name="scheduled_time" id="hours">
+                            <option>--SELECCIONE UNA OPCION--</option>
+                            <option  value="F">Femenino</option>
+                            <option  value="M">Masculino</option>
+                        </select>
                         @error('gender')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror

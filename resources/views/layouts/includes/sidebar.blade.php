@@ -35,12 +35,6 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
-                <i class="fa fa-user-lock menu-icon"></i>
-                <span class="menu-title">Roles</span>
-            </a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link collapsed" data-toggle="collapse" href="#page-layouts" aria-expanded="false"
                 aria-controls="page-layouts">
                 <i class="fa fa-flask menu-icon"></i>
@@ -51,7 +45,6 @@
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{route('exam')}}">Gestionar Examenes</a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="{{route('exam.create')}}">Crear resultados</a></li>
                     <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="#">Ver resultados</a></li>
                 </ul>
             </div>

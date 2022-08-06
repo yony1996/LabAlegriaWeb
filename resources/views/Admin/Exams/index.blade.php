@@ -8,7 +8,7 @@
         <div class="card-header border-0">
             <div class="row align-items-center">
                 <div class="col">
-                    <h3 class="mb-0">Examanes</h3>
+                    <h3 class="mb-0">Examenes</h3>
                 </div>
                 <div class="col text-right">
                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"

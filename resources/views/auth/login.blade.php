@@ -6,6 +6,11 @@
             <img src="{{asset('dist/images/logo2.png')}}" alt="logo" style="width: 200px; height:100px;">
         </div>
         <h4>Bienvenido</h4>
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{session('error')}}
+            </div>
+        @endif
         <form class="pt-3" method="POST" action="{{ route('login') }}">
             @csrf
             <div class="form-group">

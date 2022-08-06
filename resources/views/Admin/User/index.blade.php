@@ -221,6 +221,110 @@
                     }
                 });
             });
+            //SUSPENDER USUARIO
+            $(document).on('click', '#statusUser', function(e) {
+                var userId = $(this).data('id');
+                var status = $(this).data('status');
+                var token = $("meta[name='csrf-token']").attr("content");
+                if (status == 1){
+                    swal({
+                    title: '¿Estas Seguro?',
+                    text: "Deseas suspender a este usuario",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3f51b5',
+                    cancelButtonColor: '#ff4081',
+                    confirmButtonText: 'Great ',
+                    buttons: {
+                        cancel: {
+                            text: "Cancelar",
+                            value: null,
+                            visible: true,
+                            className: "btn btn-danger",
+                            closeModal: true,
+                        },
+                        confirm: {
+                            text: "Si",
+                            value: true,
+                            visible: true,
+                            className: "btn btn-primary",
+                            closeModal: true
+                        }
+                    }
+                }).then(function(result) {
+                    console.log(result);
+                    if (result) {
+                        $.ajax({
+                            url: "/user/" + userId +"/banned",
+                            type: 'PATCH',
+                            data: {
+                                "id": userId,
+                                "status":status,
+                                "_token": token,
+                            },
+                            success: function(response) {
+                                console.log(response);
+                                if (response.success) {
+                                    toastr.success(response.success);
+                                    $('#myTable').DataTable().ajax.reload();
+                                } else {
+                                    toastr.error(response.error);
+                                }
+                            },
+                        })
+                    }
+                });
+                }else{
+                    swal({
+                    title: '¿Estas Seguro?',
+                    text: "Deseas activar a este usuario",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3f51b5',
+                    cancelButtonColor: '#ff4081',
+                    confirmButtonText: 'Great ',
+                    buttons: {
+                        cancel: {
+                            text: "Cancelar",
+                            value: null,
+                            visible: true,
+                            className: "btn btn-danger",
+                            closeModal: true,
+                        },
+                        confirm: {
+                            text: "Si",
+                            value: true,
+                            visible: true,
+                            className: "btn btn-primary",
+                            closeModal: true
+                        }
+                    }
+                }).then(function(result) {
+                    console.log(result);
+                    if (result) {
+                        $.ajax({
+                            url: "/user/" + userId +"/banned",
+                            type: 'PATCH',
+                            data: {
+                                "id": userId,
+                                "status":status,
+                                "_token": token,
+                            },
+                            success: function(response) {
+                                console.log(response);
+                                if (response.success) {
+                                    toastr.success(response.success);
+                                    $('#myTable').DataTable().ajax.reload();
+                                } else {
+                                    toastr.error(response.error);
+                                }
+                            },
+                        })
+                    }
+                });
+                }
+                
+            });
             //GUARDAR USUARIO
             $('#save-data').click(function(event) {
                 event.preventDefault();

@@ -38,10 +38,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/users', [UserController::class, 'index'])->name('users');
     Route::post('/users', [UserController::class, 'store'])->name('user.store');
     Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
-    Route::put('/users/{user}', [UserController::class, 'update'])->name('user.update');
+    Route::patch('/users/{user}', [UserController::class, 'update'])->name('user.update');
+    Route::patch('/user/{user}/banned', [UserController::class, 'bannedUser'])->name('user.banned');
     Route::get('/users/table', [UserController::class, 'loadUsers']);
     Route::delete('/users/{user}', [UserController::class, 'destroy']);
     Route::get('/exams', [ExamController::class, 'index'])->name('exam');
+    Route::get('/exams/{exam}/edit', [ExamController::class, 'edit'])->name('exam.edit');
+    Route::patch('/exam/{exam}/edit', [ExamController::class, 'update'])->name('exam.update');
     Route::get('/exams/table', [ExamController::class, 'loadExams']);
     Route::post('/exams', [ExamController::class, 'store'])->name('exam.store');
     Route::delete('/exams/{exam}', [ExamController::class, 'destroy']);

@@ -23,9 +23,9 @@ class UserController extends Controller
                 ->addColumn('action', function ($row) {
 
                     if ($row->status == 1) {
-                        $btn = '<button class="btn btn-warning m-2" id ="statusExam" data-id="' . $row->id . '" data-status="' . $row->status . '"><i class="fa fa-ban"></i></button>';
+                        $btn = '<button class="btn btn-warning m-2" id ="statusUser" data-id="' . $row->id . '" data-status="' . $row->status . '"><i class="fa fa-ban"></i></button>';
                     } else {
-                        $btn = '<button class="btn btn-success m-2" id ="statusExam" data-id="' . $row->id . '" data-status="' . $row->status . '"><i class="fa fa-check-circle"></i></button>';
+                        $btn = '<button class="btn btn-success m-2" id ="statusUser" data-id="' . $row->id . '" data-status="' . $row->status . '"><i class="fa fa-check-circle"></i></button>';
                     }
 
                     $btn = $btn . '<a href=' . route("user.edit", $row->id) . ' class="edit btn btn-primary btn-sm m-2"><i class="fa fa-pen"></i></a>';
@@ -100,25 +100,42 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        $rules=[
+        $rules = [
             'name' => 'required', 'string', 'max:255',
             'last_name' => 'required', 'string', 'max:255',
             'gender' => 'required', 'string',
             'phone' => 'required', 'string', 'max:255',
+            'password' => 'sometimes', 'string',
             'age' => 'required', 'string', 'max:255',
-            'nui' => 'required', 'string', 'max:10', 'min:10',
+            'nui' => 'required', 'string', 'max:10', 'min:10', 'unique:users',
             'email' => 'required', 'string', 'email', 'max:255', 'unique:users', 'email:rfc,dns',
         ];
         $this->validate($request, $rules);
-        $user = User::find($id)->update([
-            'name' => $request['name'],
-            'last_name' => $request['last_name'],
-            'gender' => $request['gender'],
-            'phone' => $request['phone'],
-            'age' => $request['age'],
-            'nui' => $request['nui'],
-            'email' => $request['email'],
-        ]);
+
+        if (!empty($request['password'])) {
+            $request['password'] = Hash::make($request['password']);
+        } else {
+            unset($request['password']);
+        }
+
+        User::find($id)->update($request->all());
         return redirect()->route('users')->with('status', 'Usuario editado correctamente.');
+    }
+
+    public function bannedUser(Request $request, $id)
+    {
+        if ($request->status == 1) {
+            $user = User::findOrfail($id)->update(['status' => 0]);
+        } else {
+            $user = User::findOrfail($id)->update(['status' => 1]);
+        }
+
+        if ($user) {
+            $notification = 'El status del usuario ha sido cambiado';
+            return response()->json(['success' => $notification]);
+        } else {
+            $notification = 'Ocurrio un error';
+            return response()->json(['success' => $notification]);
+        }
     }
 }

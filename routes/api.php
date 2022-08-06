@@ -20,8 +20,8 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => ['auth:api']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/appoiments', [AppoimentController::class, 'index']);
+    Route::post('/appoiments/create', [AppoimentController::class, 'store']);
 });
-
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/schedule/hours', [ScheduleController::class, 'hours']);
