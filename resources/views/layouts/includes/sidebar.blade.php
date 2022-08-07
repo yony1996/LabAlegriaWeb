@@ -3,7 +3,7 @@
         <li class="nav-item nav-profile">
             <div class="nav-link">
                 <div class="profile-image">
-                    <img src="{{ asset('avatar/' . Auth::user()->avatar) }}" alt="image" />
+                    <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="image" />
                 </div>
                 <div class="profile-name">
                     <p class="name">

@@ -70,7 +70,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $path = 'avatar/';
+        $path = 'storage/';
         $fontPath = public_path('fonts/Oliciy.ttf');
         $char = strtoupper($data['name'][0]);
         $newAvatarName = rand(12, 34353) . time() .'_'. $data['last_name'] . '_avatar.png';
