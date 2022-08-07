@@ -17,7 +17,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            $user['avatar'] = storage_path($user['avatar']);
+            $user['avatar'] = public_path("avatar/$user->avatar");
             $passport =  $user->createToken(env('APP_NAME'))->accessToken;
             $rol = $user->getRoleNames()->first();
             $success = true;
