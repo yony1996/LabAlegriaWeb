@@ -30,8 +30,6 @@ class HomeController extends Controller
 
     public function dashboard()
     {
-        $user = Auth::user();
-        dd( $user['avatar'] = storage_path($user['avatar']));
         return view('admin');
     }
 }
