@@ -16,7 +16,7 @@ class AppoimentController extends Controller
         $appoiments =  Appoiment::join('users', 'users.id', '=', 'appoiments.user_id')
             ->join('exams', 'exams.id', '=', 'appoiments.exam_id')
             ->where('user_id', '=', Auth::user()->id)
-            ->select('exams.name', 'appoiments.status','appoiments.scheduled_date','appoiments.scheduled_time')
+            ->select('exams.name', 'appoiments.status','appoiments.scheduled_date','appoiments.scheduled_time','appoiments.id')
             ->get();
 
         return  $appoiments;
