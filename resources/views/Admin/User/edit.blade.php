@@ -48,10 +48,10 @@
                     </div>
                     <div class="col">
                         <label>Sexo</label>
-                        <select class="form-control" name="scheduled_time" id="hours">
+                        <select class="form-control" name="gender">
                             <option>--SELECCIONE UNA OPCION--</option>
-                            <option  value="F">Femenino</option>
-                            <option  value="M">Masculino</option>
+                            <option {{old('gender',$user->gender)=="F"? 'selected':''}} value="F">Femenino</option>
+                            <option {{old('gender',$user->gender)=="M"? 'selected':''}} value="M">Masculino</option>
                         </select>
                         @error('gender')
                             <small class="text-danger">{{ $message }}</small>
@@ -107,8 +107,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success" id="save-data">Registrar</button>
-                    <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-success" id="save-data">Actualizar</button>
                 </div>
             </form>
         </div>
