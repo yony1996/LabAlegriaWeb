@@ -58,10 +58,5 @@
 
             @endif
         </div>
-        <div class="card-body">
-            {{$appPend->links()}}
-        </div>
-
-
     </div>
 </div>
