@@ -33,9 +33,6 @@
                 <h1>No exiten turnos</h1>
             </div>
             @endif
-            <div class="card-body">
-                {{ $appCanc->links() }}
-            </div>
         </div>
     </div>
 </div>

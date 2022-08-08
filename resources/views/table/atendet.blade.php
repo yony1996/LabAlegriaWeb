@@ -33,9 +33,6 @@
                 <h1>No existen turnos</h1>
             </div>
             @endif
-            <div class="card-body">
-                {{ $appAtend->links() }}
-            </div>
         </div>
     </div>
 </div>
