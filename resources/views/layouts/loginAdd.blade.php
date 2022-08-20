@@ -8,7 +8,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Melody Admin</title>
+    <title>Laboratorio Alegria</title>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- plugins:css -->
@@ -21,7 +21,7 @@
     <!-- inject:css -->
     <link rel="stylesheet" href="{{ asset('dist/lab/css/style.css') }}">
     <!-- endinject -->
-    <link rel="shortcut icon" href="{{ asset('dist/lab/images/favicon.png') }}" />
+    <link rel="shortcut icon" href="{{ asset('dist/images/Logo.ico') }}"type="image/x-icon">
 </head>
 
 <body>

@@ -10,13 +10,13 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <!-- Site Metas -->
-    <title>Health Lab - Responsive HTML5 Template</title>
+    <title>Laboratorio Alegria</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
 
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="{{ asset('dist/images/favicon.ico') }}"type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('dist/images/Logo.ico') }}"type="image/x-icon">
     <link rel="apple-touch-icon" href="{{ asset('dist/images/apple-touch-icon.png') }}">
 
     <!-- Bootstrap CSS -->
@@ -30,6 +30,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('dist/css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/lab/css/venom-button.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -175,94 +176,29 @@
                     <div class="owl-carousel owl-theme">
                         <div class="item">
                             <div class="serviceBox">
-                                <div class="service-icon"><i class="fa fa-h-square" aria-hidden="true"></i></div>
-                                <h3 class="title">Lorem ipsum dolor</h3>
-                                <p class="description">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium consequuntur.
-                                </p>
-                                <a href="#" class="new-btn-d br-2">Read More</a>
+                                <div class="service-icon"><i class="fa-solid fa-dna"></i></div>
+                                <h3 class="title">Examenes de Sangre</h3>
                             </div>
                         </div>
                         <div class="item">
                             <div class="serviceBox">
-                                <div class="service-icon"><i class="fa fa-heart" aria-hidden="true"></i></div>
-                                <h3 class="title">Lorem ipsum dolor</h3>
-                                <p class="description">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium consequuntur.
-                                </p>
-                                <a href="#" class="new-btn-d br-2">Read More</a>
+                                <div class="service-icon"><i class="fa-solid fa-mask-face"></i></div>
+                                <h3 class="title">Examenes de Covid</h3>
                             </div>
                         </div>
                         <div class="item">
                             <div class="serviceBox">
-                                <div class="service-icon"><i class="fa fa-hospital-o" aria-hidden="true"></i></div>
-                                <h3 class="title">Lorem ipsum dolor</h3>
-                                <p class="description">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium consequuntur.
-                                </p>
-                                <a href="#" class="new-btn-d br-2">Read More</a>
+                                <div class="service-icon"><i class="fa-solid fa-bacteria"></i></div>
+                                <h3 class="title">Examenes de Heces</h3>
                             </div>
                         </div>
                         <div class="item">
                             <div class="serviceBox">
-                                <div class="service-icon"><i class="fa fa-stethoscope" aria-hidden="true"></i></div>
-                                <h3 class="title">Lorem ipsum dolor</h3>
-                                <p class="description">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium consequuntur.
-                                </p>
-                                <a href="#" class="new-btn-d br-2">Read More</a>
+                                <div class="service-icon"><i class="fa-solid fa-prescription-bottle"></i></div>
+                                <h3 class="title">Examenes de Orina</h3>
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="serviceBox">
-                                <div class="service-icon"><i class="fa fa-wheelchair" aria-hidden="true"></i></div>
-                                <h3 class="title">Lorem ipsum dolor</h3>
-                                <p class="description">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium consequuntur.
-                                </p>
-                                <a href="#" class="new-btn-d br-2">Read More</a>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="serviceBox">
-                                <div class="service-icon"><i class="fa fa-plus-square" aria-hidden="true"></i></div>
-                                <h3 class="title">Lorem ipsum dolor</h3>
-                                <p class="description">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium consequuntur.
-                                </p>
-                                <a href="#" class="new-btn-d br-2">Read More</a>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="serviceBox">
-                                <div class="service-icon"><i class="fa fa-medkit" aria-hidden="true"></i></div>
-                                <h3 class="title">Lorem ipsum dolor</h3>
-                                <p class="description">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium consequuntur.
-                                </p>
-                                <a href="#" class="new-btn-d br-2">Read More</a>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="serviceBox">
-                                <div class="service-icon"><i class="fa fa-user-md" aria-hidden="true"></i></div>
-                                <h3 class="title">Lorem ipsum dolor</h3>
-                                <p class="description">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium consequuntur.
-                                </p>
-                                <a href="#" class="new-btn-d br-2">Read More</a>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="serviceBox">
-                                <div class="service-icon"><i class="fa fa-ambulance" aria-hidden="true"></i></div>
-                                <h3 class="title">Lorem ipsum dolor</h3>
-                                <p class="description">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium consequuntur.
-                                </p>
-                                <a href="#" class="new-btn-d br-2">Read More</a>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

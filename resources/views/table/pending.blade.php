@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card shadow">
     <div class="card-body">
         <h4 class="card-title">Turnos Pendientes</h4>
         <div class="table-responsive">
@@ -10,7 +10,6 @@
                             <th>Examen</th>
                             <th>Fecha</th>
                             <th>Hora</th>
-                            <th>Estado</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -23,27 +22,20 @@
                                 <td>{{ $app->scheduled_date }}</td>
                                 <td>{{ $app->scheduled_time }}</td>
                                 <td>
-                                    <label class="badge badge-success  badge-pill">{{ $app->status }}</label>
-                                </td>
-                                <td>
 
-                                    <form action="" method="POST" class="d-inline-block">
-                                        @csrf
-
-                                        <button class="btn btn-sm btn-outline-success" type="submit"
-                                            data-toggle="tooltip" title="Confirmar Cita">
-                                            <i class="fa fa-check"></i>
-                                        </button>
-                                    </form>
+                                    <button class="btn btn-sm btn-outline-success" id="atendetAppoiment"
+                                        data-id="{{ $app->id }}" type="submit" data-toggle="tooltip"
+                                        title="Turno atendido">
+                                        <i class="fa fa-check"></i>
+                                    </button>
 
 
-                                    <form action="" method="POST" class="d-inline-block">
-                                        @csrf
-                                        <button class="btn btn-sm btn-outline-danger" type="submit"
-                                            data-toggle="tooltip" title="Cancelar Cita">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </form>
+
+                                    <button class="btn btn-sm btn-outline-danger" id="cancelAppoiment"
+                                        data-id="{{ $app->id }}" type="submit" data-toggle="tooltip"
+                                        title="Turno cancelado">
+                                        <i class="fa fa-times"></i>
+                                    </button>
 
                                 </td>
 
@@ -55,8 +47,10 @@
                 <div class="col-md-12 text-center">
                     <h1>No existen turnos</h1>
                 </div>
-
             @endif
         </div>
     </div>
+</div>
+<div class="card-body">
+    {{ $appPend->links() }}
 </div>

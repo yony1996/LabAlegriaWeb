@@ -26,10 +26,12 @@ class AppoimentController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('status', function ($row) {
-                    if ($row->status === "Reservada") {
-                        $status = '<label class="badge badge-success  badge-pill">' . $row->status . '</label>';
-                    } else {
-                        $status = '<label class="badge badge-danger  badge-pill">' . $row->status . '</label>';
+                    if ($row->status == 1) {
+                        $status = '<label class="badge badge-warning  badge-pill">Reservada</label>';
+                    } elseif($row->status == 0) {
+                        $status = '<label class="badge badge-danger  badge-pill">Cancelada</label>';
+                    }else{
+                        $status = '<label class="badge badge-success  badge-pill">Atendida</label>';
                     }
                     return $status;
                 })

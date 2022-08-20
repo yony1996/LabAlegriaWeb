@@ -22,7 +22,7 @@
                             <td>{{ $app->scheduled_date }}</td>
                             <td>{{ $app->scheduled_time }}</td>
                             <td>
-                                <label class="badge badge-danger  badge-pill">{{ $app->status }}</label>
+                                <label class="badge badge-danger  badge-pill">Cancelada</label>
                             </td>
                         </tr>
                     @endforeach
@@ -35,4 +35,7 @@
             @endif
         </div>
     </div>
+</div>
+<div class="card-body">
+    {{ $appPend->links() }}
 </div>

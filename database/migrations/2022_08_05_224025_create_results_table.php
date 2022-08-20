@@ -15,7 +15,17 @@ class CreateResultsTable extends Migration
     {
         Schema::create('results', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->string('doctor');
+            $table->string('orden');
+            $table->json('hematologia')->nullable();
+            $table->json('coprologico')->nullable();
+            $table->json('orina')->nullable();
+            $table->json('covid')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
         });
     }
 

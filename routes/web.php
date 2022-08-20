@@ -5,6 +5,7 @@ use App\Http\Controllers\ExamController;
 use App\Http\Controllers\GenericController;
 use App\Http\Controllers\WorkDayController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ResultController;
 use App\Http\Controllers\UserController;
 use App\Interfaces\ScheduleServiceInterface;
 use Illuminate\Support\Facades\Auth;
@@ -25,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/generic',function(){
+Route::get('/generic', function () {
     return view('table.generic');
 });
 Route::middleware('auth')->group(function () {
@@ -49,6 +50,14 @@ Route::middleware('auth')->group(function () {
     Route::post('/exams', [ExamController::class, 'store'])->name('exam.store');
     Route::delete('/exams/{exam}', [ExamController::class, 'destroy']);
     Route::put('/exams/{exam}/status', [ExamController::class, 'changeStatus']);
-    Route::get('/exam/create',[ExamController::class,'create'])->name('exam.create');
-    Route::get('/table/generic',[GenericController::class,'loadTables'])->name('generic.table');
+    Route::get('/exam/create', [ExamController::class, 'create'])->name('exam.create');
+    Route::get('/table/generic', [GenericController::class, 'loadTables'])->name('generic.table');
+    Route::patch('/appoiment/{appoimentId}/change', [GenericController::class, 'updateAtendet']);
+    Route::get('/result',[ResultController::class,'results'])->name('results');
+    Route::post('/result/Hematologia',[ResultController::class,'storeHemato'])->name('store.hemato');
+    Route::post('/result/Coprologia',[ResultController::class,'storeCopro'])->name('store.copro');
+    Route::post('/result/Orina',[ResultController::class,'storeOrin'])->name('store.orin');
+    Route::post('/result/Covid',[ResultController::class,'storeCov'])->name('store.cov');
+    Route::get('autocomplete', [UserController::class,'autocomplete'])->name('autocomplete');
+    Route::get('/records/{record}/preview', [ResultController::class,'preview'])->name('record.preview');
 });

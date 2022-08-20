@@ -77,7 +77,7 @@
                     </li>
                     @endrole
                     <li class="nav-item"> <a class="nav-link" href="{{route('exam.create')}}">Crear resultados</a></li>
-                    <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="#">Ver resultados</a></li>
+                    <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{route('results')}}">Ver resultados</a></li>
                 </ul>
             </div>
         </li>
@@ -90,7 +90,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{route('exam')}}">
+            <a class="nav-link" href="{{route('results')}}">
                 <i class="fa fa-flask menu-icon"></i>
                 <span class="menu-title">Mis Examenes</span>
             </a>

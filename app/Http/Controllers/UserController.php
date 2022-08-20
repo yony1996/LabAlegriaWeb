@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Yajra\DataTables\DataTables;
 
@@ -137,5 +138,13 @@ class UserController extends Controller
             $notification = 'Ocurrio un error';
             return response()->json(['success' => $notification]);
         }
+    }
+
+    public function autocomplete(Request $request)
+    {
+        $data = User::select("nui as value", "id", DB::raw("CONCAT(users.name,' ',users.last_name) as fullname"), "age", "gender")
+            ->where('nui', 'LIKE', '%' . $request->get('search') . '%')
+            ->get();
+        return response()->json($data);
     }
 }

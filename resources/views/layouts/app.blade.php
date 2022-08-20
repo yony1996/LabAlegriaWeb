@@ -8,7 +8,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Melody Admin</title>
+    <title>Laboratorio Alegria</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ asset('dist/lab/vendors/iconfonts/font-awesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/lab/vendors/css/vendor.bundle.base.css') }}">
@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="{{ asset('dist/lab/css/custom.css') }}">
     @yield('css')
     <!-- endinject -->
-    <link rel="shortcut icon" href="{{ asset('dist/lab/images/favicon.png') }}" />
+    <link rel="shortcut icon" href="{{ asset('dist/images/Logo.ico') }}"type="image/x-icon">
 </head>
 
 <body>

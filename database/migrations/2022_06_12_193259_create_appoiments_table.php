@@ -25,7 +25,7 @@ class CreateAppoimentsTable extends Migration
             $table->date('scheduled_date');
             $table->time('scheduled_time');
 
-            $table->string('status')->default('Reservada');
+            $table->boolean('status')->default(1)->comment('0:Cancelada 1:Reservada 2:Atendida');
             $table->timestamps();
             $table->softDeletes();
         });

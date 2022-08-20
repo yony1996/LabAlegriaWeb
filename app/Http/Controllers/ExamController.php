@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Exam;
+use App\Models\Result;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
@@ -25,7 +26,8 @@ class ExamController extends Controller
         return view('Admin.Exams.edit', compact('exam'));
     }
 
-    public function update(Request $request,$id){
+    public function update(Request $request, $id)
+    {
         $rules = [
             'name' => 'required', 'string', 'max:255',
             'description' => 'sometimes', 'string',
@@ -90,13 +92,15 @@ class ExamController extends Controller
     }
     public function changeStatus(Request $request, $id)
     {
-        if($request->status == 1){
-            $status=Exam::findOrfail($id)->update(['status'=>0]);
-        }else{
-            $status=Exam::findOrfail($id)->update(['status'=>1]);
+        if ($request->status == 1) {
+            $status = Exam::findOrfail($id)->update(['status' => 0]);
+        } else {
+            $status = Exam::findOrfail($id)->update(['status' => 1]);
         }
-        return response()->json(['success'=>$status]);
-        
+        if ($status) {
+            $notification = "se ha cambiado el estatus";
+        }
+        return response()->json(['success' => $notification]);
     }
 
     public function create(Request $request)

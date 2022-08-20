@@ -19,6 +19,7 @@ class Appoiment extends Model
         'scheduled_date',
         'scheduled_time',
         'created_at',
+        'status',
         'updated_at',
         'type',
     ];

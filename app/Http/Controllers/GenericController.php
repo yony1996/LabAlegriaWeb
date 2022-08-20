@@ -9,10 +9,31 @@ class GenericController extends Controller
 {
     public function loadTables()
     {
-        $appPend = Appoiment::with('user')->where('status','=','Reservada')->get();
-        $appAtend = Appoiment::with('user')->where('status','=','Atendida')->get();
-        $appCanc = Appoiment::with('user')->where('status','=','Cancelada')->get();
-       
-        return view('table.generic',compact('appPend','appAtend','appCanc'));
+        $appPend = Appoiment::has('user')->where('status', '=', 1)->paginate(5);
+        $appAtend = Appoiment::has('user')->where('status', '=', 2)->paginate(5);
+        $appCanc = Appoiment::has('user')->where('status', '=', 0)->paginate(5);
+
+        return view('table.generic', compact('appPend', 'appAtend', 'appCanc'));
+    }
+
+    public function updateAtendet($id)
+    {
+
+        $atendet = Appoiment::findOrfail($id)->update(['status' => 2]);
+        if ($atendet) {
+            $notification = 'El turno se ha marcado como atendido';
+            return response()->json(['success' => $notification]);
+        } else {
+            $notification = 'Ocurrio un error';
+            return response()->json(['success' => $notification]);
+        }
+    }
+
+    public function updateCanceled($id)
+    {
+        Appoiment::findOrfail($id)->update([
+            'status' => 0
+        ]);
+        return redirect()->route('generic.table')->with('status', 'Se a cambiado el estado correctamente');
     }
 }

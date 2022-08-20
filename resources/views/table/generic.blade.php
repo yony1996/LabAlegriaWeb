@@ -37,29 +37,56 @@
 
         <div class="card-body">
 
-            <form action="" method="POST">
-                @csrf
-                <div class="tab-content" id="myTabContent">
 
-                    <div class="tab-pane fade show active" id="pen" role="tabpanel" aria-labelledby="pen-tab">
+            <div class="tab-content" id="myTabContent">
+                <meta name="csrf-token" content="{{ csrf_token() }}" />
+                <div class="tab-pane fade show active" id="pen" role="tabpanel" aria-labelledby="pen-tab">
 
-                       @include('table.pending')
-
-                    </div>
-
-                    <div class="tab-pane fade" id="ate" role="tabpanel" aria-labelledby="ate-tab">
-                       @include('table.atendet')
-                    </div>
-
-                    <div class="tab-pane fade" id="can" role="tabpanel" aria-labelledby="can-tab">
-                        @include('table.canceled')
-                    </div>
+                    @include('table.pending')
 
                 </div>
-            </form>
+
+                <div class="tab-pane fade" id="ate" role="tabpanel" aria-labelledby="ate-tab">
+                    @include('table.atendet')
+                </div>
+
+                <div class="tab-pane fade" id="can" role="tabpanel" aria-labelledby="can-tab">
+                    @include('table.canceled')
+                </div>
+
+            </div>
+
         </div>
     </div>
 @endsection
 
 @section('js')
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            $(document).on('click', '#atendetAppoiment', function(e) {
+                event.preventDefault();
+                var appoimentId = $(this).data('id');
+                var token = $("meta[name='csrf-token']").attr("content");
+                $.ajax({
+                    url: "/appoiment/" + appoimentId + "/change",
+                    type: 'PATCH',
+                    data: {
+                        "id": appoimentId,
+                        "_token": token,
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        if (response.success) {
+                            toastr.success(response.success);
+                        } else {
+                            toastr.error(response.error);
+                        }
+                    },
+                })
+            });
+        });
+    </script>
 @endsection
