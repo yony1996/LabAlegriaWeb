@@ -31,9 +31,15 @@ class GenericController extends Controller
 
     public function updateCanceled($id)
     {
-        Appoiment::findOrfail($id)->update([
+        $cancel=Appoiment::findOrfail($id)->update([
             'status' => 0
         ]);
-        return redirect()->route('generic.table')->with('status', 'Se a cambiado el estado correctamente');
+        if ($cancel) {
+            $notification = 'El turno se ha marcado como Cancelado';
+            return response()->json(['success' => $notification]);
+        } else {
+            $notification = 'Ocurrio un error';
+            return response()->json(['success' => $notification]);
+        }
     }
 }

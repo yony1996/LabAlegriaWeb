@@ -52,7 +52,8 @@ Route::middleware('auth')->group(function () {
     Route::put('/exams/{exam}/status', [ExamController::class, 'changeStatus']);
     Route::get('/exam/create', [ExamController::class, 'create'])->name('exam.create');
     Route::get('/table/generic', [GenericController::class, 'loadTables'])->name('generic.table');
-    Route::patch('/appoiment/{appoimentId}/change', [GenericController::class, 'updateAtendet']);
+    Route::patch('/AtendetAppoiment/{appoimentId}/change', [GenericController::class, 'updateAtendet']);
+    Route::patch('/CancelAppoiment/{appoimentId}/change', [GenericController::class, 'updateCanceled']);
     Route::get('/result',[ResultController::class,'results'])->name('results');
     Route::post('/result/Hematologia',[ResultController::class,'storeHemato'])->name('store.hemato');
     Route::post('/result/Coprologia',[ResultController::class,'storeCopro'])->name('store.copro');

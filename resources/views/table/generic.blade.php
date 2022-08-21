@@ -14,6 +14,7 @@
             display: inline-flex;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 @endsection
 @section('content')
     <div class="card">
@@ -71,7 +72,7 @@
                 var appoimentId = $(this).data('id');
                 var token = $("meta[name='csrf-token']").attr("content");
                 $.ajax({
-                    url: "/appoiment/" + appoimentId + "/change",
+                    url: "/AtendetAppoiment/" + appoimentId + "/change",
                     type: 'PATCH',
                     data: {
                         "id": appoimentId,
@@ -81,6 +82,30 @@
                         console.log(response);
                         if (response.success) {
                             toastr.success(response.success);
+                            window.location.reload(true);
+                        } else {
+                            toastr.error(response.error);
+                        }
+                    },
+                })
+            });
+
+            $(document).on('click', '#cancelAppoiment', function(e) {
+                event.preventDefault();
+                var appoimentId = $(this).data('id');
+                var token = $("meta[name='csrf-token']").attr("content");
+                $.ajax({
+                    url: "/CancelAppoiment/" + appoimentId + "/change",
+                    type: 'PATCH',
+                    data: {
+                        "id": appoimentId,
+                        "_token": token,
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        if (response.success) {
+                            toastr.success(response.success);
+                            window.location.reload(true);
                         } else {
                             toastr.error(response.error);
                         }

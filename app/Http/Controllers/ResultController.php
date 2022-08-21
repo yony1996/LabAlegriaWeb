@@ -103,7 +103,7 @@ class ResultController extends Controller
         $hemato = json_decode($hemato->orina);
         //dd($hemato);
         //$custom= array(0,0,76,144);
-        $pdf = PDF::loadView('pdf.examen_orina',compact('hemato'));
+        $pdf = PDF::loadView('pdf.covid');
         $pdf->setPaper('A4'); //$pdf->setPaper($custom);
         return $pdf->stream();
     }
