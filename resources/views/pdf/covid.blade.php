@@ -62,7 +62,7 @@
             <td style="font-size: 10px;">CEDULA:</td>
             <td style="font-size: 10px;">{{$userData->user->nui}}</td>
             <td style="font-size: 10px;">FECHA TOMA DE MUESTRA:</td>
-            <td style="font-size: 10px;">{{$data->fechaMu}}</td>
+            <td style="font-size: 10px;">{{$userData->fechaMu}}</td>
         </tr>
         <tr style="border-top: 1px solid black;">
             <td style="font-size: 10px;">EDAD:</td>
