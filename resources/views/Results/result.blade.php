@@ -3,13 +3,14 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Mi Examenes</h4>
+            <h4 class="card-title">Examenes</h4>
             <div class="table-responsive">
 
                 <table class="table">
                     <thead>
                         <tr>
                             <th>Paciente</th>
+                            <th>Tipo</th>
                             <th>Fecha</th>
                             <th>Acciones</th>
                         </tr>
@@ -18,12 +19,11 @@
                         @foreach ($results as $result )
                         <tr>
                             <td>{{$result->user->name}} {{$result->user->last_name}}</td>
-                            <td>{{$result->created_at}}</td>
+                            <td>{{$result->type}}</td>
+                            <td>{{$result->created_at->format('Y-m-d')}}</td>
                             <td>
-                                <button class="btn btn-sm btn-outline-success" id="atendetAppoiment" data-id=""
-                                    type="submit" data-toggle="tooltip" title="Descargar">
-                                    <i class="fa fa-download"></i>
-                                </button>
+                             
+                                <a class="btn btn-sm btn-outline-success"  title="Descargar" href="{{route('record.print',$result->id)}}" ><i class="fa fa-download"></i></a>
 
                                 <a class="btn btn-sm btn-outline-primary"  title="Previsualizar" href="{{route('record.preview',$result->id)}}" target="_blank"> <i class="fa fa-eye"></i></a>
 

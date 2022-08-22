@@ -48,7 +48,7 @@
     <script src="{{ asset('dist/lab/vendors/js/vendor.bundle.addons.js') }}"></script>
     <!-- endinject -->
     <!-- inject:js -->
-
+    @yield('js')
     <!-- endinject -->
 </body>
 

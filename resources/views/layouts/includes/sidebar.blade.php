@@ -45,7 +45,7 @@
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{route('exam')}}">Gestionar Examenes</a>
                     </li>
-                    <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="#">Ver resultados</a></li>
+                    <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{route('results')}}">Ver resultados</a></li>
                 </ul>
             </div>
         </li>

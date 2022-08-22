@@ -11,19 +11,27 @@
                     </div>
                     <div class="d-flex" style="margin: 16px;">
                         <p style="margin-left: 16px; margin-right: 40px;">NOMBRES:</p>
-                        <input type="text" id="name" class="form-control" style="width: 300px;">
+                        <input type="text" id="name" class="form-control"
+                            style="width: 300px; text-transform: uppercase;" disabled>
                     </div>
                     <div class="d-flex" style="margin: 16px;">
                         <p style="margin-left: 16px; margin-right: 28px;">PASAPORTE:</p>
-                        <input type="text" id="search" class="typeahead form-control" style="width: 300px;">
+                        <input type="text" id="search"
+                            class="typeahead form-control"oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                            autocomplete="off" maxlength="10" minlength="10" style="width: 300px;">
+
                     </div>
+                    @error('user_id')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
                     <div class="d-flex" style="margin: 16px;">
                         <p style="margin-left: 16px; margin-right: 70px;">EDAD:</p>
-                        <input type="text" id="edad" class="form-control" style="width: 300px;">
+                        <input type="text" id="edad" class="form-control" style="width: 300px;" disabled>
                     </div>
                     <div class="d-flex" style="margin: 16px;">
                         <p style="margin-left: 16px; margin-right: 50px;">GENERO:</p>
-                        <input type="text" id="gender" class="form-control" style="width: 300px;">
+                        <input type="text" id="gender" class="form-control"
+                            style="width: 300px;text-transform: uppercase;" disabled>
                     </div>
                 </div>
                 <div class="col-md-6 text-center">
@@ -40,15 +48,33 @@
 
                     <div class="d-flex">
                         <p style="margin-left: 16px; margin-right: 50px;">Dr.</p>
-                        <input type="text" class="form-control" id="doctor" style="margin-left:90px; width: 300px;">
+                        <input type="text"
+                            oninput="this.value = this.value.replace(/[^A-Za-z&ntilde; ]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                            class="form-control" id="doctor" value="{{ old('doctor') }}"
+                            style="margin-left:90px; width: 300px;text-transform: uppercase;">
                     </div>
+                    @error('doctor')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
                     <hr style="border:2px solid black">
                     <div class="d-flex" style="margin-top: 20px;">
 
                         <p style="margin-left: 16px; margin-right: 50px;">Número de Orden:</p>
-                        <input type="text" class="form-control" id="orden" style="margin-right: 20px; width: 300px;">
-
+                        <input type="text" class="form-control" value="{{ old('orden') }}" id="orden"
+                            style="margin-right: 20px; width: 300px;">
                     </div>
+                    @error('orden')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
+                   
+                    <div class="d-flex" style="margin-top: 20px;">
+                        <p style="margin-left: 16px; margin-right: 40px;">Fecha Toma Muestra:</p>
+                        <input type="date"  id="fechaMuestra" class="form-control"
+                            style="width:300px;">
+                    </div>
+                    @error('fechaMuestra')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
             </div>
         </div>
@@ -104,9 +130,9 @@
 @endsection
 
 @section('css')
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <style>
         .aParent div {
             float: left;
@@ -119,13 +145,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('.ckeditor').ckeditor();
-        });
-    </script>
     <script type="text/javascript">
         var path = "{{ route('autocomplete') }}";
         $("#search").autocomplete({
@@ -183,7 +203,6 @@
 
     <script>
         $(document).ready(function() {
-
             $("#doctor").keyup(function() {
                 var doctor = document.getElementById('doctor').value;
                 $("#doc").val(doctor);
@@ -198,18 +217,20 @@
                 $("#ord3").val(orden);
                 $("#ord4").val(orden);
             })
+            $('#fechaMuestra').change(function(){
+                var fechaM = document.getElementById('fechaMuestra').value;
+                console.log(fechaM);
+                $('#fechaMu').val(fechaM);
+                $('#fechaMu2').val(fechaM);
+                $('#fechaMu3').val(fechaM);
+                $('#fechaMu4').val(fechaM);
+            })
         });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     @if (session('success'))
         <script>
             toastr.success('{{ session('success') }}');
-        </script>
-    @endif
-
-    @if (session('errors'))
-        <script>
-            toastr.warning('{{ session('errors') }}');
         </script>
     @endif
 @endsection

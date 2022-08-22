@@ -1,8 +1,10 @@
 <form action="{{route('store.orin')}}" method="post">
     @csrf
-    <input type="hidden" id="id3" name="user_id">
-    <input type="hidden" id="doc3" name="doctor">
-    <input type="hidden" id="ord3" name="orden">
+    <input type="hidden" id="id3" value="{{old('user_id')}}" name="user_id">
+    <input type="hidden" id="doc3"value="{{old('doctor')}}" name="doctor">
+    <input type="hidden" id="ord3" value="{{old('orden')}}" name="orden">
+    <input type="hidden" name="fechaMuestra" id="fechaMu3" value="{{old('fechaMuestra')}}">
+    <input type="hidden"  name="type" value="orina">
     <div class="col-md stretch-card">
         <div class="col-md stretch-card">
             <div class="card">

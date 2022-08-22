@@ -1,8 +1,10 @@
 <form  action="{{route('store.hemato')}}" method="POST">
     @csrf
-    <input type="hidden" id="id" name="user_id">
-    <input type="hidden" id="doc" name="doctor">
-    <input type="hidden" id="ord" name="orden">
+    <input type="hidden" id="id"  value="{{old('user_id')}}" name="user_id">
+    <input type="hidden" id="doc"  value="{{old('doctor')}}" name="doctor">
+    <input type="hidden" id="ord"  value="{{old('orden')}}" name="orden">
+    <input type="hidden" name="type" value="sangre">
+    <input type="hidden" name="fechaMuestra" id="fechaMu" value="{{old('fechaMuestra')}}">
     <div class="col-md stretch-card">
         <div class="col-md stretch-card">
             <div class="card">
@@ -22,7 +24,7 @@
                                     </h6>
                                 </div>
                                 <div id="collapse-1" class="collapse" role="tabpanel" aria-labelledby="heading-1"
-                                    data-parent="#accordion" style="">
+                                    data-parent="#accordion">
                                     <div class="card-body">
                                         <div class="table-responsive">
                                             <table class="table">

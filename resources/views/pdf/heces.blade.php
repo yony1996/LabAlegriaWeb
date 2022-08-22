@@ -40,38 +40,34 @@
         </tr>
     </table>
 
-    <table style="width: 100%; margin-top: 1cm; border-spacing:0;">
-        <tr style="width: 100%;">
+    <table style="width: 100%; margin-top: 0.5cm; border-spacing: 0;">
+        <tr>
             <th align="left" colspan="4" style="padding-left: 4cm; background: #75C4DD;">DATOS PACIENTE</th>
 
         </tr>
         <tr style="border-top: 1px solid black;">
-            <td style="font-size: 10px; padding-top: 8px;">NOMBRES:</td>
-            <td style="font-size: 10px; padding-top: 8px;"></td>
-            <td style="font-size: 10px; padding-top: 8px;"></td>
-            <td style="font-size: 10px; padding-top: 8px;">MEDICO SOLICITANTE:</td>
-            <td style="font-size: 10px; padding-top: 8px;"></td>
-
+            <td style="font-size: 10px;">NOMBRES:</td>
+            <td style="font-size: 10px;">{{$userData->user->name}} {{$userData->user->last_name}}</td>
+            <td style="font-size: 10px;">MEDICO SOLICITANTE:</td>
+            <td style="font-size: 10px;">{{$userData->doctor}}</td>
         </tr>
         <tr style="border-top: 1px solid black;">
-            <td style="font-size: 10px; padding-top: 8px;">CEDULA:</td>
-            <td style="font-size: 10px; padding-top: 8px;"></td>
-            <td style="font-size: 10px; padding-top: 8px;"></td>
-            <td style="font-size: 10px; padding-top: 8px;">FECHA TOMA DE MUESTRA:</td>
-            <td style="font-size: 10px; padding-top: 8px;"></td>
-
+            <td style="font-size: 10px;">CEDULA:</td>
+            <td style="font-size: 10px;">{{$userData->user->nui}}</td>
+            <td style="font-size: 10px;">FECHA TOMA DE MUESTRA:</td>
+            <td style="font-size: 10px;">{{$userData->fechaMu}}</td>
         </tr>
         <tr style="border-top: 1px solid black;">
-            <td style="font-size: 10px; padding-top: 8px;">EDAD:</td>
-            <td style="font-size: 10px; padding-top: 8px;"></td>
-            <td style="font-size: 10px; padding-top: 8px;"></td>
-            <td style="font-size: 10px; padding-top: 8px;">FECHA DE VALIDACIÓN</td>
-            <td style="font-size: 10px; padding-top: 8px;"></td>
+            <td style="font-size: 10px;">EDAD:</td>
+            <td style="font-size: 10px;">{{$userData->user->age}}</td>
+            <td style="font-size: 10px;">FECHA DE VALIDACIÓN</td>
+            <td style="font-size: 10px;">{{$userData->created_at->format('Y-m-d')}}</td>
         </tr>
         <tr style="border-top: 1px solid black;">
-            <td style="font-size: 10px; padding-top: 8px;">GENERO:</td>
-            <td style="font-size: 10px; padding-top: 8px;"></td>
-            <td style="font-size: 10px; padding-top: 8px;"></td>
+            <td style="font-size: 10px;">GENERO:</td>
+            <td style="font-size: 10px;">{{$userData->user->gender}}</td>
+            <td style="font-size: 10px;"></td>
+            <td style="font-size: 10px;"></td>
         </tr>
     </table>
 
@@ -86,15 +82,15 @@
         </tr>
         <tr style="border-top: 1px solid black;">
             <td align="left" colspan="1" style="font-size: 14px;  padding-top: 8px;">Color:</td>
-            <td align="center" style="font-size: 14px;  padding-top: 8px;">cafe</td>
+            <td align="center" style="font-size: 14px;  padding-top: 8px;">{{$data->examFisiCol[0]}}</td>
             <td align="center" style="font-size: 14px;  padding-top: 8px;">Consistencia:</td>
-            <td align="center" style="font-size: 14px;  padding-top: 8px;">pastosa</td>
+            <td align="center" style="font-size: 14px;  padding-top: 8px;">{{$data->examFisiCon[0]}}</td>
         </tr>
         <tr style="border-top: 1px solid black;">
             <td align="left" colspan="1" style="font-size: 14px;  padding-top: 8px;">Aspecto:</td>
-            <td align="center" style="font-size: 14px;  padding-top: 8px;">Heterogeneo</td>
+            <td align="center" style="font-size: 14px;  padding-top: 8px;">{{$data->examFisiAsp[0]}}</td>
             <td align="center" style="font-size: 14px;  padding-top: 8px;">Restos Alimenticios:</td>
-            <td align="center" style="font-size: 14px;  padding-top: 8px;">+</td>
+            <td align="center" style="font-size: 14px;  padding-top: 8px;">{{$data->examFisiResA[0]}}</td>
         </tr>
         <tr>
             <td align="left" style="padding-top: 1cm; margin-left: 8px; font-weight: bold;">EXAMEN MICROSCOPICO</td>
@@ -102,26 +98,26 @@
         <tr>
             <td align="left" style="font-size: 14px;  padding-top: 8px;"></td>
             <td align="left" style="font-size: 14px;  padding-top: 8px;">Almidon:</td>
-            <td align="left" style="font-size: 14px;  padding-top: 8px;">+</td>
+            <td align="left" style="font-size: 14px;  padding-top: 8px;">{{$data->examMicroAlm[0]}}</td>
         </tr>
         <tr>
             <td align="left" style="font-size: 14px;  padding-top: 8px;"></td>
             <td align="left" style="font-size: 14px;  padding-top: 8px;">Levadura:</td>
-            <td align="left" style="font-size: 14px;  padding-top: 8px;">+</td>
+            <td align="left" style="font-size: 14px;  padding-top: 8px;">{{$data->examMicroLev[0]}}</td>
         </tr>
         <tr>
             <td align="left" style="font-size: 14px;  padding-top: 8px;"></td>
             <td align="left" style="font-size: 14px;  padding-top: 8px;">Grasas:</td>
-            <td align="left" style="font-size: 14px;  padding-top: 8px;">+</td>
+            <td align="left" style="font-size: 14px;  padding-top: 8px;">{{$data->examMicroGra[0]}}</td>
         </tr>
         <tr>
             <td align="left" style="font-size: 14px;  padding-top: 8px;"></td>
             <td align="left" style="font-size: 14px;  padding-top: 8px;">Flora Bacteriana:</td>
-            <td align="left" style="font-size: 14px;  padding-top: 8px;">Normal</td>
+            <td align="left" style="font-size: 14px;  padding-top: 8px;">{{$data->examMicroFloB[0]}}</td>
         </tr>
         <tr>
             <td align="center" style="font-size: 14px;  padding-top: 8px;">Parásitos:</td>
-            <td align="left" style="font-size: 14px;  padding-top: 8px;">E.nana +</td>
+            <td align="left" style="font-size: 14px;  padding-top: 8px;">{{$data->examMicroPar[0]}}</td>
             <td align="left" style="font-size: 14px;  padding-top: 8px;"></td>
         </tr>
     </table>

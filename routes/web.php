@@ -61,4 +61,5 @@ Route::middleware('auth')->group(function () {
     Route::post('/result/Covid',[ResultController::class,'storeCov'])->name('store.cov');
     Route::get('autocomplete', [UserController::class,'autocomplete'])->name('autocomplete');
     Route::get('/records/{record}/preview', [ResultController::class,'preview'])->name('record.preview');
+    Route::get('/record/{record}/print',  [ResultController::class,'print'])->name('record.print');
 });

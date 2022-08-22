@@ -10,10 +10,11 @@ class Result extends Model
 {
     use HasFactory, SoftDeletes;
     protected $fillable = [
-        'user_id', 'doctor', 'orden', 'hematologia', 'coprologico', 'orina', 'covid'
+        'user_id', 'doctor', 'orden', 'type','fechaMu', 'hematologia', 'coprologico', 'orina', 'covid'
     ];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 

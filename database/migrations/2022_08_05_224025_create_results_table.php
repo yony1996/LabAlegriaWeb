@@ -18,6 +18,8 @@ class CreateResultsTable extends Migration
             $table->unsignedBigInteger('user_id')->nullable();
             $table->string('doctor');
             $table->string('orden');
+            $table->string('type');
+            $table->string('fechaMu');
             $table->json('hematologia')->nullable();
             $table->json('coprologico')->nullable();
             $table->json('orina')->nullable();

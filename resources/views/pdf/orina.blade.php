@@ -18,7 +18,7 @@
 
         * {
             box-sizing: border-box;
-            font-family: "Times New Roman", Times, serif;
+            font-family: 'Open Sans', sans-serif;
             margin: 0;
         }
 
@@ -43,32 +43,32 @@
         </tr>
     </table>
 
-    <table style="width: 100%; margin-top: 1cm; border-spacing: 8px;">
+    <table style="width: 100%; margin-top: 0.5cm; border-spacing: 8px;">
         <tr>
             <th align="left" colspan="4" style="padding-left: 4cm; background: #75C4DD;">DATOS PACIENTE</th>
 
         </tr>
         <tr style="border-top: 1px solid black;">
             <td style="font-size: 10px;">NOMBRES:</td>
-            <td style="font-size: 10px;">Juan</td>
+            <td style="font-size: 10px;">{{$userData->user->name}} {{$userData->user->last_name}}</td>
             <td style="font-size: 10px;">MEDICO SOLICITANTE:</td>
-            <td style="font-size: 10px;">dsds</td>
+            <td style="font-size: 10px;">{{$userData->doctor}}</td>
         </tr>
         <tr style="border-top: 1px solid black;">
             <td style="font-size: 10px;">CEDULA:</td>
-            <td style="font-size: 10px;">sdcs</td>
+            <td style="font-size: 10px;">{{$userData->user->nui}}</td>
             <td style="font-size: 10px;">FECHA TOMA DE MUESTRA:</td>
-            <td style="font-size: 10px;">ewfwef</td>
+            <td style="font-size: 10px;">{{$userData->fechaMu}}</td>
         </tr>
         <tr style="border-top: 1px solid black;">
             <td style="font-size: 10px;">EDAD:</td>
-            <td style="font-size: 10px;">fwefw</td>
+            <td style="font-size: 10px;">{{$userData->user->age}}</td>
             <td style="font-size: 10px;">FECHA DE VALIDACIÓN</td>
-            <td style="font-size: 10px;">efwfe</td>
+            <td style="font-size: 10px;">{{$userData->created_at->format('Y-m-d')}}</td>
         </tr>
         <tr style="border-top: 1px solid black;">
             <td style="font-size: 10px;">GENERO:</td>
-            <td style="font-size: 10px;">wfeef</td>
+            <td style="font-size: 10px;">{{$userData->user->gender}}</td>
             <td style="font-size: 10px;"></td>
             <td style="font-size: 10px;"></td>
         </tr>
@@ -83,19 +83,19 @@
         </tr>
         <tr style="border-top: 1px solid black;">
             <td style="font-size: 12px;">Color:</td>
-            <td style="font-size: 12px;">{{$hemato->examFisiColor[0]}}</td>
+            <td style="font-size: 12px;">{{$data->examFisiColor[0]}}</td>
             <td style="font-size: 12px;">Reacción:</td>
-            <td style="font-size: 12px;">fwefew</td>
+            <td style="font-size: 12px;">{{$data->examFisiReac[0]}}</td>
         </tr>
         <tr style="border-top: 1px solid black;">
             <td style="font-size: 12px;">Aspecto:</td>
-            <td style="font-size: 12px;">wfef</td>
+            <td style="font-size: 12px;">{{$data->examFisiAsp[0]}}</td>
             <td style="font-size: 12px;">pH:</td>
-            <td style="font-size: 12px;">fwef</td>
+            <td style="font-size: 12px;">{{$data->examFisiPh[0]}}</td>
         </tr>
         <tr style="border-top: 1px solid black;">
             <td style="font-size: 12px;">Densidad:</td>
-            <td style="font-size: 12px;">fsefe</td>
+            <td style="font-size: 12px;">{{$data->examFisiDen[0]}}</td>
             <td style="font-size: 12px;"></td>
             <td style="font-size: 12px;"></td>
         </tr>
@@ -104,58 +104,58 @@
         </tr>
         <tr style="border-top: 1px solid black;">
             <td style="font-size: 12px;">Leucocitos:</td>
-            <td style="font-size: 12px;">wefew</td>
+            <td style="font-size: 12px;">{{$data->examQuimLeu[0]}}</td>
             <td style="font-size: 12px;">Cetonas:</td>
-            <td style="font-size: 12px;">wefew</td>
+            <td style="font-size: 12px;">{{$data->examQuimCet[0]}}</td>
         </tr>
         <tr style="border-top: 1px solid black;">
             <td style="font-size: 12px;">Nitritos:</td>
-            <td style="font-size: 12px;">fwef</td>
+            <td style="font-size: 12px;">{{$data->examQuimNi[0]}}</td>
             <td style="font-size: 12px;">Urobilinógeno:</td>
-            <td style="font-size: 12px;">wfeef</td>
+            <td style="font-size: 12px;">{{$data->examQuimUro[0]}}</td>
         </tr>
         <tr style="border-top: 1px solid black;">
             <td style="font-size: 12px;">Proteinas:</td>
-            <td style="font-size: 12px;">fwefew</td>
+            <td style="font-size: 12px;">{{$data->examQuimPro[0]}}</td>
             <td style="font-size: 12px;">Bilirrubinas:</td>
-            <td style="font-size: 12px;">wefew</td>
+            <td style="font-size: 12px;">{{$data->examQuimBili[0]}}</td>
         </tr>
         <tr style="border-top: 1px solid black;">
             <td style="font-size: 12px;">Glucosa:</td>
-            <td style="font-size: 12px;">wfef</td>
+            <td style="font-size: 12px;">{{$data->examQuimGlu[0]}}</td>
             <td style="font-size: 12px;">Sangre:</td>
-            <td style="font-size: 12px;">wfef</td>
+            <td style="font-size: 12px;">{{$data->examQuimSan[0]}}</td>
         </tr>
         <tr style="border-top: 1px solid black;">
             <td style="font-size: 12px;"></td>
             <td style="font-size: 12px;"></td>
             <td style="font-size: 12px;">Hemoglobina:</td>
-            <td style="font-size: 12px;">fwefw</td>
+            <td style="font-size: 12px;">{{$data->examQuimHemo[0]}}</td>
         </tr>
         <tr>
             <th align="left" colspan="3">EXAMEN MICROSCÓPICO</th>
         </tr>
         <tr style="border-top: 1px solid black;">
             <td style="font-size: 12px;">Células Epiteliales:</td>
-            <td style="font-size: 12px;">sefwef</td>
+            <td style="font-size: 12px;">{{$data->examMicroCeEp[0]}}</td>
             <td style="font-size: 12px;">Cristales</td>
-            <td style="font-size: 12px;">feewfw</td>
+            <td style="font-size: 12px;">{{$data->examMicroCris[0]}}</td>
         </tr>
         <tr style="border-top: 1px solid black;">
             <td style="font-size: 12px;">Células Redondas:</td>
-            <td style="font-size: 12px;">wewerew</td>
+            <td style="font-size: 12px;">{{$data->examMicroCeRe[0]}}</td>
             <td style="font-size: 12px;">Bacterias:</td>
-            <td style="font-size: 12px;">efwfew</td>
+            <td style="font-size: 12px;">{{$data->examMicroBac[0]}}</td>
         </tr>
         <tr style="border-top: 1px solid black;">
             <td style="font-size: 12px;">Piocitos:</td>
-            <td style="font-size: 12px;">fwefwe</td>
+            <td style="font-size: 12px;">{{$data->examMicroPio[0]}}</td>
             <td style="font-size: 12px;">Filamento Mucoso:</td>
-            <td style="font-size: 12px;">wfeewf</td>
+            <td style="font-size: 12px;">{{$data->examMicroFiMu[0]}}</td>
         </tr>
         <tr style="border-top: 1px solid black;">
             <td style="font-size: 12px;">Hematíes:</td>
-            <td style="font-size: 12px;">fwef</td>
+            <td style="font-size: 12px;">{{$data->examMicroHema[0]}}</td>
             <td style="font-size: 12px;"></td>
             <td style="font-size: 12px;"></td>
         </tr>

@@ -54,27 +54,27 @@
         </tr>
         <tr style="border-top: 1px solid black;">
             <td style="font-size: 10px;">NOMBRES:</td>
-            <td style="font-size: 10px;">Juan</td>
+            <td style="font-size: 10px;">{{$userData->user->name}} {{$userData->user->last_name}}</td>
             <td style="font-size: 10px;">MEDICO SOLICITANTE:</td>
-            <td style="font-size: 10px;">dsds</td>
+            <td style="font-size: 10px;">{{$userData->doctor}}</td>
         </tr>
         <tr style="border-top: 1px solid black;">
             <td style="font-size: 10px;">CEDULA:</td>
-            <td style="font-size: 10px;">sdcs</td>
+            <td style="font-size: 10px;">{{$userData->user->nui}}</td>
             <td style="font-size: 10px;">FECHA TOMA DE MUESTRA:</td>
-            <td style="font-size: 10px;">ewfwef</td>
+            <td style="font-size: 10px;">{{$data->fechaMuestra}}</td>
         </tr>
         <tr style="border-top: 1px solid black;">
             <td style="font-size: 10px;">EDAD:</td>
-            <td style="font-size: 10px;">fwefw</td>
+            <td style="font-size: 10px;">{{$userData->user->age}}</td>
             <td style="font-size: 10px;">FECHA DE VALIDACIÓN</td>
-            <td style="font-size: 10px;">efwfe</td>
+            <td style="font-size: 10px;">{{$userData->created_at->format('Y-m-d')}}</td>
         </tr>
         <tr style="border-top: 1px solid black;">
             <td style="font-size: 10px;">GENERO:</td>
-            <td style="font-size: 10px;">wfeef</td>
+            <td style="font-size: 10px;">{{$userData->user->gender}}</td>
             <td style="font-size: 10px;">NUMERO DE ORDEN:</td>
-            <td style="font-size: 10px;">54844845185</td>
+            <td style="font-size: 10px;">{{$userData->orden}}</td>
         </tr>
     </table>
     <div style="background:#063970; color:white; padding: 5px; text-align: center; margin-top: 0.5cm;">
@@ -88,16 +88,16 @@
         </tr>
         <tr class="result">
             <td align="center">ANTIGENO SARS COVID19</td>
-            <td align="center">NEGATIVO</td>
+            <td align="center" style="text-transform: uppercase;">{{$data->antigenoCov}}</td>
             <td align="center"></td>
         </tr>
         <tr class="result">
-            <td align="center" style="color: #b3b3b3">METODO: INMUNOCROMATOGRAFIA</td>
+            <td align="center" style="color: #b3b3b3;text-transform: uppercase;">METODO: {{$data->metodo}}</td>
             <td align="center"></td>
             <td align="center"></td>
         </tr>
         <tr class="result">
-            <td align="left" style="font-weight: bold; font-size:12px;">Muestra: Hisopado nasofaríngeo/ orofaringeo
+            <td align="left" style="font-weight: bold; font-size:12px;">Muestra: {{$data->metodo}}
             </td>
             <td align="center"></td>
             <td align="center"></td>
@@ -107,22 +107,15 @@
     <div style="margin-top:0.5cm ;">
         <span style="font-weight: bold;">INTERPRETACION:</span>
     </div>
-    <div style="width: 100%; height:auto; padding: 8px;">
-        <p style=" text-align:justify; text-justify:inter-word;">Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Nulla excepturi
-            distinctio inventore odit facere incidunt, ipsum quod, at quibusdam autem nam adipisci ullam. Consequatur
-            quae, dolore eaque repellat aspernatur provident. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Magnam numquam illum autem quo sed, quia temporibus ea aspernatur dignissimos eveniet quae totam consectetur
-            pariatur eligendi perferendis enim hic aut perspiciatis.
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque obcaecati nobis distinctio tempora.
-            Veritatis sapiente quis, mollitia at labore ipsum doloremque, hic ipsam quidem placeat vero assumenda ea
-            dolorum necessitatibus.
+    <div style="width: 100%; height:auto; max-height: 150px; padding: 8px;">
+        <p style=" text-align:justify; text-justify:inter-word;">
+            {{$data->interpretacion}}
         </p>
     </div>
     <div>
         <span style="font-style: italic; font-weight: bold;">Nota:</span>
     </div>
-    <div style="width: 100%; height:250px; padding: 8px; font-size:13px;">
+    <div style="width: 100%; height:120px; padding: 8px; font-size:13px;">
         <p style=" text-align:justify; text-justify:inter-word;">
             - Existe la posibilidad de falsos positivos por reacciones cruzadas Otros Virus de la familia caranaviridae. <br/>
             - EL DIAGNOSTICO Y LA INTERPRETACION SOLO DEBE SER MANEJADO POR LIN MÉDICO capacitado. <br/>
@@ -130,7 +123,29 @@
             - El test de Antígeno Covid-19, no debe utilizarse en personas sin síntomas, a menos que la persona sea contacto directo de un caso comprobado. <br/></p>
     </div>
 
+    <p style="font-size: 14px; font-weight: bold; font-style:italic; margin-top:1cm;">Validado por: MSc.BQ.Alvaro
+        Bautista.</p>
+    <div style="margin-top:2cm; display:flex; justify-content:center; text-align: center;">
+        <hr style="width:5cm; margin: 0 auto;">
+        <p style="font-size: 12px;"> MSc.BQ.Alvaro Bautista.</p>
+        <p style="font-size: 12px;">CI:1003565064</p>
+        <p style="font-size: 12px;">LABORATORIO</p>
+    </div>
+    <table style="width: 100%; margin-top:0.5cm;">
+        <tr>
+            <td>
+                <p style="font-size: 12px;">Direccion: Av. HUGO ORTIZ Y VACA DE LA VEGA </p>
+                <p style="font-size: 12px;">Sector: QUITO SUR</p>
+            </td>
+            <td align="right">
+                <p style="font-size: 12px;">laboratorioalegria@gmail.com</p>
+                <p style="font-size: 12px;">0987530267</p>
+                <p style="font-size: 12px;">Quito-Ecuador</p>
+            </td>
+        </tr>
+    </table>
 
+    <footer style="text-align: center;margin-top:20px;"><span style="font-size: 8px;">Este examen solo tendra validez al ser firmado por el laboratorista encargado de validar el resultado</span></footer>
 
 </body>
 
