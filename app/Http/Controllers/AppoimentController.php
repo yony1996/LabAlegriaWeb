@@ -8,7 +8,7 @@ use App\Models\Exam;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
-
+use App\Http\Controllers\SendMailAppoiment;
 class AppoimentController extends Controller
 {
     public function index()
@@ -52,6 +52,8 @@ class AppoimentController extends Controller
         $created = Appoiment::createForPatient($request, Auth::user()->id);
         if ($created) {
             $notification = 'El turno se ha registrado correctarmente.';
+            $sendMail= new SendMailAppoiment();
+            $notifiMail= $sendMail->index($created);
             return response()->json(['success' => $notification]);
         } else {
             $error = 'Ocurrio un problema al registrar el turno';

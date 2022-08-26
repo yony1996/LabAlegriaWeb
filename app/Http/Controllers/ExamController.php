@@ -70,6 +70,10 @@ class ExamController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required', 'string',
+            'description' =>  'sometimes','string'
+        ]);
         $exam = Exam::createExam($request);
         if ($exam) {
             $notification = "Examen registrado";

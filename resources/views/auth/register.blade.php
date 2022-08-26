@@ -67,6 +67,7 @@
                 <label>Teléfono</label>
                 <div class="input-group">
                     <input type="text" name="phone" class="form-control form-control-lg" value="{{ old('phone') }}"
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*?)\..*/g, '$1');"
                         placeholder="Celular">
                 </div>
                 @error('phone')

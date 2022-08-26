@@ -1,10 +1,10 @@
-<form  action="{{route('store.hemato')}}" method="POST">
+<form action="{{ route('store.hemato') }}" method="POST">
     @csrf
-    <input type="hidden" id="id"  value="{{old('user_id')}}" name="user_id">
-    <input type="hidden" id="doc"  value="{{old('doctor')}}" name="doctor">
-    <input type="hidden" id="ord"  value="{{old('orden')}}" name="orden">
+    <input type="hidden" id="id" value="{{ old('user_id') }}" name="user_id">
+    <input type="hidden" id="doc" value="{{ old('doctor') }}" name="doctor">
+    <input type="hidden" id="ord" value="{{ old('orden') }}" name="orden">
     <input type="hidden" name="type" value="sangre">
-    <input type="hidden" name="fechaMuestra" id="fechaMu" value="{{old('fechaMuestra')}}">
+    <input type="hidden" name="fechaMuestra" id="fechaMu" value="{{ old('fechaMuestra') }}">
     <div class="col-md stretch-card">
         <div class="col-md stretch-card">
             <div class="card">
@@ -280,97 +280,121 @@
                                                     <tr>
                                                         <td>GLUCOSA</td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="quimicaGLU[]">
+                                                            <input type="text" class="form-control"
+                                                                name="quimicaGLU[]">
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="quimicaGLU[]">
+                                                            <input type="text" class="form-control"
+                                                                name="quimicaGLU[]">
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="quimicaGLU[]">
+                                                            <input type="text" class="form-control"
+                                                                name="quimicaGLU[]">
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>UREA</td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="quimicaURE[]">
+                                                            <input type="text" class="form-control"
+                                                                name="quimicaURE[]">
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="quimicaURE[]">
+                                                            <input type="text" class="form-control"
+                                                                name="quimicaURE[]">
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="quimicaURE[]">
+                                                            <input type="text" class="form-control"
+                                                                name="quimicaURE[]">
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>CREATININA</td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="quimicaCRE[]">
+                                                            <input type="text" class="form-control"
+                                                                name="quimicaCRE[]">
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="quimicaCRE[]">
+                                                            <input type="text" class="form-control"
+                                                                name="quimicaCRE[]">
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="quimicaCRE[]">
+                                                            <input type="text" class="form-control"
+                                                                name="quimicaCRE[]">
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>COLESTEROL</td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="quimicaCOL[]">
+                                                            <input type="text" class="form-control"
+                                                                name="quimicaCOL[]">
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="quimicaCOL[]">
+                                                            <input type="text" class="form-control"
+                                                                name="quimicaCOL[]">
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="quimicaCOL[]">
+                                                            <input type="text" class="form-control"
+                                                                name="quimicaCOL[]">
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>TRIGLICERIDOS</td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="quimicaTRIG[]">
+                                                            <input type="text" class="form-control"
+                                                                name="quimicaTRIG[]">
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="quimicaTRIG[]">
+                                                            <input type="text" class="form-control"
+                                                                name="quimicaTRIG[]">
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="quimicaTRIG[]">
+                                                            <input type="text" class="form-control"
+                                                                name="quimicaTRIG[]">
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>TGO</td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="quimicaTGO[]">
+                                                            <input type="text" class="form-control"
+                                                                name="quimicaTGO[]">
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="quimicaTGO[]">
+                                                            <input type="text" class="form-control"
+                                                                name="quimicaTGO[]">
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="quimicaTGO[]">
+                                                            <input type="text" class="form-control"
+                                                                name="quimicaTGO[]">
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>TGP</td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="quimicaTGP[]">
+                                                            <input type="text" class="form-control"
+                                                                name="quimicaTGP[]">
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="quimicaTGP[]">
+                                                            <input type="text" class="form-control"
+                                                                name="quimicaTGP[]">
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="quimicaTGP[]">
+                                                            <input type="text" class="form-control"
+                                                                name="quimicaTGP[]">
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>FOSFATASA ALCALINA</td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="quimicaFAL[]">
+                                                            <input type="text" class="form-control"
+                                                                name="quimicaFAL[]">
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="quimicaFAL[]">
+                                                            <input type="text" class="form-control"
+                                                                name="quimicaFAL[]">
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="quimicaFAL[]">
+                                                            <input type="text" class="form-control"
+                                                                name="quimicaFAL[]">
                                                         </td>
                                                     </tr>
 
@@ -407,40 +431,46 @@
                                                     <tr>
                                                         <td>TSH</td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="hormonasTSH[]">
+                                                            <input type="text" class="form-control"
+                                                                name="hormonasTSH[]">
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="hormonasTSH[]">
+                                                            <input type="text" class="form-control"
+                                                                name="hormonasTSH[]">
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="hormonasTSH[]">
+                                                            <input type="text" class="form-control"
+                                                                name="hormonasTSH[]">
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>T3 Total</td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="hormonasT3[]">
+                                                            <input type="text" class="form-control"
+                                                                name="hormonasT3[]">
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="hormonasT3[]">
+                                                            <input type="text" class="form-control"
+                                                                name="hormonasT3[]">
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="hormonasT3[]">
+                                                            <input type="text" class="form-control"
+                                                                name="hormonasT3[]">
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>T4 Total</td>
                                                         <td>
                                                             <input type="text" class="form-control"
-                                                                id="exampleInputUsername1">
+                                                                name="hormonasT4[]" id="exampleInputUsername1">
                                                         </td>
                                                         <td>
                                                             <input type="text" class="form-control"
-                                                                id="exampleInputUsername1">
+                                                                name="hormonasT4[]" id="exampleInputUsername1">
                                                         </td>
                                                         <td>
                                                             <input type="text" class="form-control"
-                                                                id="exampleInputUsername1">
+                                                                name="hormonasT4[]" id="exampleInputUsername1">
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -476,13 +506,16 @@
                                                     <tr>
                                                         <td>CALCIO TOTAL</td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="electrolitosCTOL[]">
+                                                            <input type="text" class="form-control"
+                                                                name="electrolitosCTOL[]">
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="electrolitosCTOL[]">
+                                                            <input type="text" class="form-control"
+                                                                name="electrolitosCTOL[]">
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control" name="electrolitosCTOL[]">
+                                                            <input type="text" class="form-control"
+                                                                name="electrolitosCTOL[]">
                                                         </td>
                                                     </tr>
                                                 </tbody>

@@ -9,7 +9,9 @@
                 <table class="table">
                     <thead>
                         <tr>
+                            @hasanyrole('Admin|Bioquimico')
                             <th>Paciente</th>
+                            @endhasanyrole
                             <th>Tipo</th>
                             <th>Fecha</th>
                             <th>Acciones</th>
@@ -18,7 +20,9 @@
                     <tbody>
                         @foreach ($results as $result )
                         <tr>
+                            @hasanyrole('Admin|Bioquimico')
                             <td>{{$result->user->name}} {{$result->user->last_name}}</td>
+                            @endhasanyrole    
                             <td>{{$result->type}}</td>
                             <td>{{$result->created_at->format('Y-m-d')}}</td>
                             <td>

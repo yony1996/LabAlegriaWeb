@@ -48,6 +48,17 @@ class UserController extends Controller
     }
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required', 'string', 'max:255',
+            'last_name' => 'required', 'string', 'max:255',
+            'gender' => 'required', 'string',
+            'phone' => 'required', 'string', 'max:255',
+            'password' => 'sometimes', 'string',
+            'age' => 'required', 'string', 'max:255',
+            'nui' => 'required', 'string', 'max:10', 'min:10', 'unique:users',
+            'email' => 'required', 'string', 'email', 'max:255', 'unique:users', 'email:rfc,dns',
+        ]);
+        //$this->validate($request, $rules);
         $path = 'avatar/';
         $fontPath = public_path('fonts/Oliciy.ttf');
         $char = strtoupper($request['name'][0]);

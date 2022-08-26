@@ -47,7 +47,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Agregar Examen</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" id="dismiss" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -56,15 +56,20 @@
                         @csrf
                         <div class="form-group">
                             <label for="exampleInputName1">Nombre</label>
-                            <input type="text" name="name" class="form-control" id="exampleInputName1">
+                            <input type="text" name="name" class="form-control" id="name"
+                                style="text-transform: uppercase;"
+                                oninput="this.value = this.value.replace(/[^A-Za-z&ntilde;]/g,'').replace(/(\..*?)\..*/g, '$1');">
+                            <small class="text-danger" id="nam"></small>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputName1">Descipcion</label>
-                            <input type="text" name="description" class="form-control" id="exampleInputName1">
+                            <input type="text" name="description" class="form-control" id="description"
+                                style="text-transform: uppercase;"
+                                oninput="this.value = this.value.replace(/[^A-Za-z&ntilde;]/g,'').replace(/(\..*?)\..*/g, '$1');">
+                            <small class="text-danger" id="descrip"></small>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-success" id="save-data">Guardar</button>
-                            <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
                         </div>
                     </form>
                 </div>
@@ -79,6 +84,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>
         $(document).ready(function() {
+            $('#dismiss').click(function() {
+                $("#form")[0].reset();
+                $('#nam').text('');
+                $('#descrip').text('');
+
+            });
             //Guardar examen
             $('#save-data').click(function(event) {
                 event.preventDefault();
@@ -102,8 +113,8 @@
                         }
                     },
                     error: function(response) {
-
-                        toastr.error(response.error);
+                        $('#nam').text(response.responseJSON.errors.name);
+                        $('#descrip').text(response.responseJSON.errors.description);
                     }
                 });
             });
@@ -139,7 +150,7 @@
                     console.log(result);
                     if (result) {
                         $.ajax({
-                            url: "/exams/"+examId,
+                            url: "/exams/" + examId,
                             type: 'DELETE',
                             data: {
                                 "id": examId,
@@ -191,7 +202,7 @@
                     console.log(result);
                     if (result) {
                         $.ajax({
-                            url: "/exams/"+examId+"/status",
+                            url: "/exams/" + examId + "/status",
                             type: 'PUT',
                             data: {
                                 "id": examId,

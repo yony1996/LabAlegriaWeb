@@ -6,10 +6,14 @@ use App\Http\Controllers\GenericController;
 use App\Http\Controllers\WorkDayController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ResultController;
+use App\Http\Controllers\SendMailAppoiment;
 use App\Http\Controllers\UserController;
 use App\Interfaces\ScheduleServiceInterface;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+use App\Mail\AppoimentMailable;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,12 +58,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/table/generic', [GenericController::class, 'loadTables'])->name('generic.table');
     Route::patch('/AtendetAppoiment/{appoimentId}/change', [GenericController::class, 'updateAtendet']);
     Route::patch('/CancelAppoiment/{appoimentId}/change', [GenericController::class, 'updateCanceled']);
-    Route::get('/result',[ResultController::class,'results'])->name('results');
-    Route::post('/result/Hematologia',[ResultController::class,'storeHemato'])->name('store.hemato');
-    Route::post('/result/Coprologia',[ResultController::class,'storeCopro'])->name('store.copro');
-    Route::post('/result/Orina',[ResultController::class,'storeOrin'])->name('store.orin');
-    Route::post('/result/Covid',[ResultController::class,'storeCov'])->name('store.cov');
-    Route::get('autocomplete', [UserController::class,'autocomplete'])->name('autocomplete');
-    Route::get('/records/{record}/preview', [ResultController::class,'preview'])->name('record.preview');
-    Route::get('/record/{record}/print',  [ResultController::class,'print'])->name('record.print');
+    Route::get('/result', [ResultController::class, 'results'])->name('results');
+    Route::post('/result/Hematologia', [ResultController::class, 'storeHemato'])->name('store.hemato');
+    Route::post('/result/Coprologia', [ResultController::class, 'storeCopro'])->name('store.copro');
+    Route::post('/result/Orina', [ResultController::class, 'storeOrin'])->name('store.orin');
+    Route::post('/result/Covid', [ResultController::class, 'storeCov'])->name('store.cov');
+    Route::get('autocomplete', [UserController::class, 'autocomplete'])->name('autocomplete');
+    Route::get('/records/{record}/preview', [ResultController::class, 'preview'])->name('record.preview');
+    Route::get('/record/{record}/print',  [ResultController::class, 'print'])->name('record.print');
+    Route::get('/mail', [SendMailAppoiment::class, 'index']);
 });

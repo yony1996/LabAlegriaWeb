@@ -271,7 +271,8 @@
                                 <i class="fa fa-location-arrow" aria-hidden="true"></i>
                             </div>
                             <div class="media-body dit-right">
-                                <h4>Contactos</h4>
+                                <h4>Dirección</h4>
+                                <a href="#">Av.Teniente Hugo Ortiz y Vaca de la Vega, Quito</a>
                             </div>
                         </div>
                         <div class="media cont-line">
@@ -280,8 +281,7 @@
                             </div>
                             <div class="media-body dit-right">
                                 <h4>Email</h4>
-                                <a href="#">demoinfo@gmail.com</a><br>
-                                <a href="#">demoinfo@gmail.com</a>
+                                <a href="#">laboratorioalegria1@gmail.com</a><br>
                             </div>
                         </div>
                         <div class="media cont-line">
@@ -289,9 +289,9 @@
                                 <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
                             </div>
                             <div class="media-body dit-right">
-                                <h4>Phone Number</h4>
-                                <a href="#">12345 67890</a><br>
-                                <a href="#">12345 67890</a>
+                                <h4>Teléfono</h4>
+                                <a href="#">0987530267</a><br>
+                                <a href="#">0983785192</a>
                             </div>
                         </div>
                     </div>
@@ -343,7 +343,7 @@
                 message: "Hola, deseo reservar un turno",
                 chatMessage: 'Hola 👋<br><br>Como te posdemos ayudar?',
                 showPopup: true,
-                avatar: '',
+                avatar: '../../../img/logobg.png',
                 position: "right",
                 linkButton: false,
                 showOnIE: false,

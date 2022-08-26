@@ -29,9 +29,9 @@
         <!-- partial:../../partials/_navbar.html -->
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo" href="#"><img src="{{asset('dist/images/logo2.png')}}"
+                <a class="navbar-brand brand-logo" href="#"><img src="{{ asset('dist/images/logo2.png') }}"
                         alt="logo" /></a>
-                <a class="navbar-brand brand-logo-mini" href="#"><img src="{{asset('dist/images/logo2.png')}}"
+                <a class="navbar-brand brand-logo-mini" href="#"><img src="{{ asset('dist/images/logo2.png') }}"
                         alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-stretch">
@@ -41,7 +41,11 @@
                 <ul class="navbar-nav navbar-nav-right">
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                            <img src="{{ asset('avatar/' . Auth::user()->avatar) }}" alt="profile" />
+                            @if (isset(Auth::user()->avatar))
+                                <img src="{{ asset('avatar/' . Auth::user()->avatar) }}" alt="profile" />
+                            @else
+                                <img src="{{ asset('img/Logobg.png') }}" alt="profile" />
+                            @endif
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
                             aria-labelledby="profileDropdown">

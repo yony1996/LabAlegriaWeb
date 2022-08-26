@@ -58,7 +58,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Crear Paciente</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" id="dismiss" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -72,24 +72,24 @@
 
                                     <input type="text" name="name"
                                         class="form-control  @error('name') invalid @enderror form-control-lg"
+                                        style="text-transform: uppercase;"
+                                        oninput="this.value = this.value.replace(/[^A-Za-z&ntilde;]/g,'').replace(/(\..*?)\..*/g, '$1');"
                                         value="{{ old('name') }}"placeholder="Nombre">
 
                                 </div>
-                                @error('name')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
+                                <small class="text-danger" id="name"></small>
                             </div>
                             <div class="col">
                                 <label>Apellido</label>
                                 <div class="input-group">
 
                                     <input type="text" name="last_name" class="form-control form-control-lg"
+                                        style="text-transform: uppercase;"
+                                        oninput="this.value = this.value.replace(/[^A-Za-z&ntilde;]/g,'').replace(/(\..*?)\..*/g, '$1');"
                                         placeholder="Apellido" value="{{ old('last_name') }}">
 
                                 </div>
-                                @error('last_name')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
+                                <small class="text-danger" id="last_name"></small>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -97,23 +97,25 @@
                                 <label>Edad</label>
                                 <div class="input-group">
                                     <input type="text" name="age" class="form-control form-control-lg"
-                                        value="{{ old('age') }}"placeholder="Edad">
+                                        oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                        maxlength="2" value="{{ old('age') }}"placeholder="Edad">
 
                                 </div>
-                                @error('age')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
+                                <small class="text-danger" id="age"></small>
                             </div>
                             <div class="col">
                                 <label>Sexo</label>
                                 <div class="input-group">
-                                    <input type="text" name="gender" class="form-control form-control-lg"
-                                        value="{{ old('gender') }}" placeholder="Sexo">
+                                    <select class="form-control" name="gender">
+                                        <option>--SELECCIONE UNA OPCION--</option>
+                                        <option value="F">
+                                            Femenino</option>
+                                        <option value="M">
+                                            Masculino</option>
+                                    </select>
 
                                 </div>
-                                @error('gender')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
+                                <small class="text-danger" id="gender"></small>
                             </div>
 
                         </div>
@@ -122,21 +124,19 @@
                                 <label>Cédula</label>
                                 <div class="input-group">
                                     <input type="text" name="nui" class="form-control form-control-lg"
-                                        placeholder="Cédula" value="{{ old('nui') }}">
+                                        oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                        maxlength="10" minlength="10" placeholder="Cédula" value="{{ old('nui') }}">
                                 </div>
-                                @error('nui')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
+                                <small class="text-danger" id="nui"></small>
                             </div>
                             <div class="col">
                                 <label>Teléfono</label>
                                 <div class="input-group">
                                     <input type="text" name="phone" class="form-control form-control-lg"
-                                        value="{{ old('phone') }}" placeholder="Celular">
+                                        oninput="this.value = this.value.replace(/[^0-9]/g,'').replace(/(\..*?)\..*/g, '$1');"
+                                        maxlength="10" value="{{ old('phone') }}" placeholder="Celular">
                                 </div>
-                                @error('phone')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
+                                <small class="text-danger" id="phone"></small>
                             </div>
 
                         </div>
@@ -146,14 +146,11 @@
                                 <input type="email" name="email"class="form-control form-control-lg"
                                     value="{{ old('email') }}" autocomplete="false" placeholder="Correo">
                             </div>
-                            @error('email')
-                                <small class="text-danger">{{ $message }}</small>
-                            @enderror
+                            <small class="text-danger" id="email"></small>
                         </div>
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-success" id="save-data">Registrar</button>
-                            <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
                         </div>
                     </form>
                 </div>
@@ -226,104 +223,114 @@
                 var userId = $(this).data('id');
                 var status = $(this).data('status');
                 var token = $("meta[name='csrf-token']").attr("content");
-                if (status == 1){
+                if (status == 1) {
                     swal({
-                    title: '¿Estas Seguro?',
-                    text: "Deseas suspender a este usuario",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3f51b5',
-                    cancelButtonColor: '#ff4081',
-                    confirmButtonText: 'Great ',
-                    buttons: {
-                        cancel: {
-                            text: "Cancelar",
-                            value: null,
-                            visible: true,
-                            className: "btn btn-danger",
-                            closeModal: true,
-                        },
-                        confirm: {
-                            text: "Si",
-                            value: true,
-                            visible: true,
-                            className: "btn btn-primary",
-                            closeModal: true
+                        title: '¿Estas Seguro?',
+                        text: "Deseas suspender a este usuario",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3f51b5',
+                        cancelButtonColor: '#ff4081',
+                        confirmButtonText: 'Great ',
+                        buttons: {
+                            cancel: {
+                                text: "Cancelar",
+                                value: null,
+                                visible: true,
+                                className: "btn btn-danger",
+                                closeModal: true,
+                            },
+                            confirm: {
+                                text: "Si",
+                                value: true,
+                                visible: true,
+                                className: "btn btn-primary",
+                                closeModal: true
+                            }
                         }
-                    }
-                }).then(function(result) {
-                    console.log(result);
-                    if (result) {
-                        $.ajax({
-                            url: "/user/" + userId +"/banned",
-                            type: 'PATCH',
-                            data: {
-                                "id": userId,
-                                "status":status,
-                                "_token": token,
-                            },
-                            success: function(response) {
-                                console.log(response);
-                                if (response.success) {
-                                    toastr.success(response.success);
-                                    $('#myTable').DataTable().ajax.reload();
-                                } else {
-                                    toastr.error(response.error);
-                                }
-                            },
-                        })
-                    }
-                });
-                }else{
+                    }).then(function(result) {
+                        console.log(result);
+                        if (result) {
+                            $.ajax({
+                                url: "/user/" + userId + "/banned",
+                                type: 'PATCH',
+                                data: {
+                                    "id": userId,
+                                    "status": status,
+                                    "_token": token,
+                                },
+                                success: function(response) {
+                                    console.log(response);
+                                    if (response.success) {
+                                        toastr.success(response.success);
+                                        $('#myTable').DataTable().ajax.reload();
+                                    } else {
+                                        toastr.error(response.error);
+                                    }
+                                },
+                            })
+                        }
+                    });
+                } else {
                     swal({
-                    title: '¿Estas Seguro?',
-                    text: "Deseas activar a este usuario",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3f51b5',
-                    cancelButtonColor: '#ff4081',
-                    confirmButtonText: 'Great ',
-                    buttons: {
-                        cancel: {
-                            text: "Cancelar",
-                            value: null,
-                            visible: true,
-                            className: "btn btn-danger",
-                            closeModal: true,
-                        },
-                        confirm: {
-                            text: "Si",
-                            value: true,
-                            visible: true,
-                            className: "btn btn-primary",
-                            closeModal: true
+                        title: '¿Estas Seguro?',
+                        text: "Deseas activar a este usuario",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3f51b5',
+                        cancelButtonColor: '#ff4081',
+                        confirmButtonText: 'Great ',
+                        buttons: {
+                            cancel: {
+                                text: "Cancelar",
+                                value: null,
+                                visible: true,
+                                className: "btn btn-danger",
+                                closeModal: true,
+                            },
+                            confirm: {
+                                text: "Si",
+                                value: true,
+                                visible: true,
+                                className: "btn btn-primary",
+                                closeModal: true
+                            }
                         }
-                    }
-                }).then(function(result) {
-                    console.log(result);
-                    if (result) {
-                        $.ajax({
-                            url: "/user/" + userId +"/banned",
-                            type: 'PATCH',
-                            data: {
-                                "id": userId,
-                                "status":status,
-                                "_token": token,
-                            },
-                            success: function(response) {
-                                console.log(response);
-                                if (response.success) {
-                                    toastr.success(response.success);
-                                    $('#myTable').DataTable().ajax.reload();
-                                } else {
-                                    toastr.error(response.error);
-                                }
-                            },
-                        })
-                    }
-                });
+                    }).then(function(result) {
+                        console.log(result);
+                        if (result) {
+                            $.ajax({
+                                url: "/user/" + userId + "/banned",
+                                type: 'PATCH',
+                                data: {
+                                    "id": userId,
+                                    "status": status,
+                                    "_token": token,
+                                },
+                                success: function(response) {
+                                    console.log(response);
+                                    if (response.success) {
+                                        toastr.success(response.success);
+                                        $('#myTable').DataTable().ajax.reload();
+                                    } else {
+                                        toastr.error(response.error);
+                                    }
+                                },
+                            })
+                        }
+                    });
                 }
-                
+
+            });
+            $('#dismiss').click(function() {
+                $("#form")[0].reset();
+                $('#name').text('');
+                $('#last_name').text('');
+                $('#age').text('');
+                $('#gender').text('');
+                $('#nui').text('');
+                $('#phone').text('');
+                $('#email').text('');
             });
             //GUARDAR USUARIO
             $('#save-data').click(function(event) {
@@ -348,6 +355,15 @@
                             toastr.error(response.error);
                         }
                     },
+                    error: function(response) {
+                        $('#name').text(response.responseJSON.errors.name);
+                        $('#last_name').text(response.responseJSON.errors.last_name);
+                        $('#age').text(response.responseJSON.errors.age);
+                        $('#gender').text(response.responseJSON.errors.gender);
+                        $('#nui').text(response.responseJSON.errors.nui);
+                        $('#phone').text(response.responseJSON.errors.phone);
+                        $('#email').text(response.responseJSON.errors.email);
+                    }
                 });
             });
             $(function() {
