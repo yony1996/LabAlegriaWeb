@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appoiment;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -30,6 +32,18 @@ class HomeController extends Controller
 
     public function dashboard()
     {
-        return view('admin');
+        $role = Auth::user()->getRoleNames()->first();
+        $user = Auth::user()->id;
+    
+        if ($role == 'Paciente') {
+            $resApp = Appoiment::where("user_id", $user)->where('status', "1")->count();
+            $attApp = Appoiment::where("user_id", $user)->where('status', "2")->count();
+            $canApp = Appoiment::where("user_id", $user)->where('status', "0")->count();
+        } else {
+            $resApp = Appoiment::where('status', "1")->count();
+            $attApp = Appoiment::where('status', "2")->count();
+            $canApp = Appoiment::where('status', "0")->count();
+        }
+        return view('admin',compact('resApp','attApp','canApp'));
     }
 }

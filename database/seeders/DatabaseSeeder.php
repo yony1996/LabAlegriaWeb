@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(10)->create();
+        //User::factory(10)->create();
         $this->call(PermissionTableSeeder::class); //php artisan migrate --seed
         $this->call(ExamTableSeeder::class);
     }

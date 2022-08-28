@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="row">
+        @hasanyrole('Bioquimico|Admin')
         <div class="col-md-6 grid-margin">
             <div class="card">
                 <div class="card-body">
@@ -36,6 +37,7 @@
                 </div>
             </div>
         </div>
+        @endhasanyrole
 
     </div>
     <div class="row">
@@ -79,37 +81,30 @@
         <div class="col-md-6 grid-margin">
             <div class="card">
                 <div class="card-body">
-                    <h2 class="card-title mb-0">Roles</h2>
+                    <h2 class="card-title mb-0">Turnos</h2>
                     <div class="d-flex justify-content-between align-items-center">
-                        <div class="d-inline-block pt-3">
-                            <div class="d-md-flex">
-                                <h6 class="mb-0">4</h6>
+                        <div class="row mt-4">
+                            <div class="col-md d-block">
+                                <label for="">Reservados</label>
+                               <div>{{ $resApp }}</div> 
+                            </div>
+                            <div class="col-md d-block">
+                                <label for="">Cancelados</label>
+                                <div>{{ $canApp }}</div>
+                            </div>
+                            <div class="col-md d-block">
+                                <label for="">Atendidos</label>
+                                <div>{{ $attApp }}</div>
                             </div>
                         </div>
+
                         <div class="d-inline-block">
-                            <i class="fa fa-lock text-info icon-lg"></i>
+                            <i class="fa  fa-check-square text-info icon-lg"></i>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-6 grid-margin">
-          <div class="card">
-              <div class="card-body">
-                  <h2 class="card-title mb-0">Turnos Reservados</h2>
-                  <div class="d-flex justify-content-between align-items-center">
-                      <div class="d-inline-block pt-3">
-                          <div class="d-md-flex">
-                              <h6 class="mb-0">4</h6>
-                          </div>
-                      </div>
-                      <div class="d-inline-block">
-                          <i class="fa  fa-check-square text-info icon-lg"></i>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
 
     </div>
     <div class="col-lg grid-margin stretch-card">
