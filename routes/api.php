@@ -25,6 +25,7 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::post('/appoiments/create', [AppoimentController::class, 'store']);
     Route::get('/exams', [ExamController::class, 'index']);
     Route::get('/results', [ResultsController::class, 'index']);
+    Route::get('/information', [AuthController::class, 'info']);
 });
 
 Route::post('/login', [AuthController::class, 'login']);

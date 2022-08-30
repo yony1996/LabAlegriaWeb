@@ -29,10 +29,12 @@ use Illuminate\Support\Facades\Mail;
 
 
 Auth::routes();
+//Auth::routes(['verify' => true]);
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/generic', function () {
     return view('table.generic');
 });
+-//Route::middleware('auth','verified')
 Route::middleware('auth')->group(function () {
     Route::get('/appoiment', [AppoimentController::class, 'index'])->name('appoiment.index');
     Route::get('/appoiment/table', [AppoimentController::class, 'loadTable'])->name('loadTable');

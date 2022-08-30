@@ -24,12 +24,7 @@ class AppoimentController extends Controller
 
     public function store(Request $request)
     {
-        /**
-         *  'user_id',
-         *  'exam_id',
-         *  'scheduled_date',
-         *  'scheduled_time',
-         */
+      
         $user = Auth::user()->id;
         $appointment = Appoiment::createForPatient($request, $user);
         if ($appointment) {

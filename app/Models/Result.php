@@ -10,7 +10,7 @@ class Result extends Model
 {
     use HasFactory, SoftDeletes;
     protected $fillable = [
-        'user_id', 'doctor', 'orden', 'type','fechaMu', 'hematologia', 'coprologico', 'orina', 'covid'
+        'id','user_id', 'doctor', 'orden', 'type','fechaMu', 'hematologia', 'coprologico', 'orina', 'covid','created_at'
     ];
 
     public function user()

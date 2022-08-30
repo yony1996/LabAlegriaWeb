@@ -53,7 +53,7 @@ class AppoimentController extends Controller
         if ($created) {
             $notification = 'El turno se ha registrado correctarmente.';
             $sendMail= new SendMailAppoiment();
-            $notifiMail= $sendMail->index($created);
+            //$notifiMail= $sendMail->index($created);
             return response()->json(['success' => $notification]);
         } else {
             $error = 'Ocurrio un problema al registrar el turno';
