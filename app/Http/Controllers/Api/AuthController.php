@@ -101,6 +101,6 @@ class AuthController extends Controller
         Auth::guard('api')->user();
         $user = Auth::user();
         $user['avatar'] = public_path("avatar/$user->avatar");
-        return [$user];
+        return $user;
     }
 }
