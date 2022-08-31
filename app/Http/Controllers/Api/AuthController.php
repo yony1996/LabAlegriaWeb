@@ -98,8 +98,9 @@ class AuthController extends Controller
 
     public function info()
     {
+        Auth::guard('api')->user();
         $user = Auth::user();
         $user['avatar'] = public_path("avatar/$user->avatar");
-        return compact('user');
+        return $user;
     }
 }
