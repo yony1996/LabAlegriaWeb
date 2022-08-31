@@ -49,7 +49,7 @@ class AuthController extends Controller
         $path = 'avatar/';
         $fontPath = public_path('fonts/Oliciy.ttf');
         $char = strtoupper($request->name);
-        $newAvatarName = rand(12, 34353) . time() .'_'. $request->last_name . '_avatar.png';
+        $newAvatarName = rand(12, 34353) . time() . '_' . $request->last_name . '_avatar.png';
         $dest = $path . $newAvatarName;
 
         $createAvatar = makeAvatar($fontPath, $dest, $char);
@@ -58,7 +58,7 @@ class AuthController extends Controller
 
         $user = User::create([
             'name' => $request->name,
-            'avatar'=>$request->avatar,
+            'avatar' => $request->avatar,
             'last_name' => $request->last_name,
             'gender' => $request->gender,
             'phone' => $request->phone,
@@ -101,6 +101,6 @@ class AuthController extends Controller
         Auth::guard('api')->user();
         $user = Auth::user();
         $user['avatar'] = public_path("avatar/$user->avatar");
-        return $user;
+        return [$user];
     }
 }
