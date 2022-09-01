@@ -13,8 +13,7 @@ class ExamController extends Controller
     public function index()
     {
     	
-        $exams = Result::where('status', 1)->select(['id', 'name'])->get();
+        $exams = Exam::where('status', 1)->select(['id', 'name'])->get();
     	return $exams;
-
     }
 }
