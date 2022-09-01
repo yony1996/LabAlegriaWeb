@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -34,7 +35,7 @@ class AuthController extends Controller
     }
     public function register(Request $request)
     {
-        $rules = [
+        $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'gender' => ['required', 'string'],
@@ -43,12 +44,15 @@ class AuthController extends Controller
             'nui' => ['required', 'string', 'max:10', 'min:10'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users', 'email:rfc,dns'],
             'password' => ['required', 'string', 'min:8'],
-        ];
-        $this->validate($request, $rules);
+        ]);
+       
+        if ($validator->fails()) {
+            return $validator;
+        }
 
         $path = 'avatar/';
         $fontPath = public_path('fonts/Oliciy.ttf');
-        $char = strtoupper($request->name);
+        $char = strtoupper($request->name[0]);
         $newAvatarName = rand(12, 34353) . time() . '_' . $request->last_name . '_avatar.png';
         $dest = $path . $newAvatarName;
 
