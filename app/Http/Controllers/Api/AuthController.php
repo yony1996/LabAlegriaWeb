@@ -18,7 +18,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            $user['avatar'] = public_path("avatar/$user->avatar");
+            $user['avatar'] = url("avatar/$user->avatar");
             $passport =  $user->createToken(env('APP_NAME'))->accessToken;
             $rol = $user->getRoleNames()->first();
             $success = true;
@@ -79,7 +79,7 @@ class AuthController extends Controller
             $rol = $user->getRoleNames()->first();
             $success = true;
 
-            $user['avatar'] = public_path("avatar/$user->avatar");
+            $user['avatar'] = url("avatar/$user->avatar");
             $user = Arr::add($user, 'rol', $rol);
             $data = compact('success', 'user', 'passport');
             return $data;
@@ -104,7 +104,7 @@ class AuthController extends Controller
     {
         Auth::guard('api')->user();
         $user = Auth::user();
-        $user['avatar'] = public_path("avatar/$user->avatar");
+        $user['avatar'] = url("avatar/$user->avatar");
         return $user;
     }
 }
