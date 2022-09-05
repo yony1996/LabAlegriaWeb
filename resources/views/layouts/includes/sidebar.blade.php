@@ -56,7 +56,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{route('chart.appoiment')}}">
                     <i class="fa fa-chart-line menu-icon"></i>
                     <span class="menu-title">Graficas</span>
                 </a>

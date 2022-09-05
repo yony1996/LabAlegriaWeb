@@ -3,6 +3,7 @@
 /public/storage
 #/storage/*.key
 /public/avatar/
+/public/pdf/
 /vendor
 .env
 .env.backup

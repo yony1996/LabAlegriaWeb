@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AppoimentController;
+use App\Http\Controllers\ChartController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\GenericController;
 use App\Http\Controllers\WorkDayController;
@@ -34,7 +35,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/generic', function () {
     return view('table.generic');
 });
--//Route::middleware('auth','verified')
+- //Route::middleware('auth','verified')
 Route::middleware('auth')->group(function () {
     Route::get('/appoiment', [AppoimentController::class, 'index'])->name('appoiment.index');
     Route::get('/appoiment/table', [AppoimentController::class, 'loadTable'])->name('loadTable');
@@ -69,4 +70,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/records/{record}/preview', [ResultController::class, 'preview'])->name('record.preview');
     Route::get('/record/{record}/print',  [ResultController::class, 'print'])->name('record.print');
     Route::get('/mail', [SendMailAppoiment::class, 'index']);
+    //chart
+    Route::get('/charts/appoiment/line', [ChartController::class, 'appoiments'])->name('chart.appoiment');
+    Route::get('/charts/results/column', [ChartController::class,'results'])->name('chart.results');
+    Route::get('/charts/results/column/data', [ChartController::class,'resultsJson']);
 });

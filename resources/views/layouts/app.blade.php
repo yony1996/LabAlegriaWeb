@@ -29,9 +29,9 @@
         <!-- partial:../../partials/_navbar.html -->
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo" href="#"><img src="{{ asset('dist/images/logo2.png') }}"
+                <a class="navbar-brand brand-logo" href="{{route('home')}}"><img src="{{ asset('dist/images/logo2.png') }}"
                         alt="logo" /></a>
-                <a class="navbar-brand brand-logo-mini" href="#"><img src="{{ asset('dist/images/logo2.png') }}"
+                <a class="navbar-brand brand-logo-mini" href="{{route('home')}}"><img src="{{ asset('dist/images/logo2.png') }}"
                         alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-stretch">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\SendMailAppoiment;
 use App\Models\Appoiment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,6 +29,8 @@ class AppoimentController extends Controller
         $user = Auth::user()->id;
         $appointment = Appoiment::createForPatient($request, $user);
         if ($appointment) {
+            $sendMail= new SendMailAppoiment();
+            $notifiMail= $sendMail->index($appointment);
             $success = true;
         } else {
             $success = false;
