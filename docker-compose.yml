@@ -19,9 +19,9 @@ services:
         restart: always
         environment:
             MYSQL_DATABASE: laravel
-            MYSQL_USER: user
-            MYSQL_PASSWORD: password
-            MYSQL_ROOT_PASSWORD: rootpassword
+            MYSQL_USER: root
+            MYSQL_PASSWORD: root1234
+            MYSQL_ROOT_PASSWORD: root1234
         ports:
             - "3306:3306"
         volumes:
