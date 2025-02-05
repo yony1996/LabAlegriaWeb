@@ -1,31 +1,44 @@
 version: "3.8"
 
 services:
-    app:
-        build: .
-        container_name: laravel_app
-        restart: always
-        working_dir: /var/www/html
-        volumes:
-            - .:/var/www/html
-        ports:
-            - "8000:80"
-        depends_on:
-            - db
+  app:
+    build: .
+    container_name: laravel_app
+    restart: always
+    working_dir: /var/www/html
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "8000:80"
+    depends_on:
+      - mysql  # Asegura que MySQL esté listo antes de iniciar Laravel
+    environment:
+      DB_CONNECTION: mysql
+      DB_HOST: mysql  # Nombre del contenedor de MySQL
+      DB_PORT: 3306
+      DB_DATABASE: labalegria
+      DB_USERNAME: root
+      DB_PASSWORD: root1234*
+    networks:
+      - laravel_network
 
-    db:
-        image: mysql:5.7
-        container_name: laravel_db
-        restart: always
-        environment:
-            MYSQL_DATABASE: laravel
-            MYSQL_USER: root
-            MYSQL_PASSWORD: root1234
-            MYSQL_ROOT_PASSWORD: root1234
-        ports:
-            - "3306:3306"
-        volumes:
-            - dbdata:/var/lib/mysql
+  mysql:
+    image: mysql:5.7
+    container_name: mysql_container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root1234*  # Define solo el password para root
+      MYSQL_DATABASE: labalegria
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - laravel_network
+
+networks:
+  laravel_network:
+    driver: bridge
 
 volumes:
-    dbdata:
+  mysql_data:
