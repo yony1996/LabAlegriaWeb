@@ -33,7 +33,7 @@ class HomeController extends Controller
         return view('welcome');
     }
 
-    public function dashboard()
+    /*  public function dashboard()
     {
         $role = Auth::user()->getRoleNames()->first();
         $user = Auth::user()->id;
@@ -59,6 +59,40 @@ class HomeController extends Controller
             $hora = $this->schedule();
             return view('admin', compact('resApp', 'attApp', 'canApp', 'results', 'exams', 'app', 'users', 'hora'));
         }
+    }
+ */
+
+    public function dashboard()
+    {
+        $user = Auth::user();
+        $role = $user->getRoleNames()->first();
+
+        // Obtener citas según el rol
+        $query = Appoiment::query();
+        if ($role == 'Paciente') {
+            $query->where("user_id", $user->id);
+        }
+        $appointments = $query->whereIn('status', ["0", "1", "2"])
+            ->selectRaw('status, COUNT(*) as count')
+            ->groupBy('status')
+            ->pluck('count', 'status');
+
+        // Asignar valores a las variables de conteo
+        $resApp = $appointments["1"] ?? 0;
+        $attApp = $appointments["2"] ?? 0;
+        $canApp = $appointments["0"] ?? 0;
+
+        // Otras consultas optimizadas
+        $results = ($role == 'Paciente')
+            ? Result::where("user_id", $user->id)->count()
+            : Result::count();
+
+        $exams = Exam::where('status', "1")->count();
+        $users = User::count();
+        $app = $this->appoiments($role, $user->id);
+        $hora = $this->schedule();
+
+        return view('admin', compact('resApp', 'attApp', 'canApp', 'results', 'exams', 'app', 'users', 'hora'));
     }
 
     private function appoiments($role, $userId)
@@ -103,18 +137,23 @@ class HomeController extends Controller
     private function schedule()
     {
         $days = [
-            'Lunes', 'Martes', 'Miércoles',
-            'Jueves', 'Viernes', 'Sábado', 'Domingo'
+            'Lunes',
+            'Martes',
+            'Miércoles',
+            'Jueves',
+            'Viernes',
+            'Sábado',
+            'Domingo'
         ];
         $workDays = WorkDay::all();
         $array = array();
         foreach ($workDays as $key => $value) {
-          
-            if ($value->active==true) {
+
+            if ($value->active == true) {
                 array_push($array, $value->day);
             }
         }
-        
+
         $d = array();
         foreach ($array as $value) {
             foreach ($days as $key => $val) {
