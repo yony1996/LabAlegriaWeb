@@ -13,6 +13,10 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install gd mbstring pdo pdo_mysql zip
 
+RUN apt-get update && \
+    apt-get install -y default-mysql-client && \
+    rm -rf /var/lib/apt/lists/*
+
 # Instalamos Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
