@@ -34,7 +34,7 @@ class Appoiment extends Model
         return $this->belongsTo(Exam::class);
     }
 
-    static public function createForPatient(Request $request, $userId)
+    /* static public function createForPatient(Request $request, $userId)
     {
 
         $data = $request->only([
@@ -49,6 +49,31 @@ class Appoiment extends Model
         $data['scheduled_time'] = $carbonTime->format('H:i:s');
 
         return self::create($data);
+    } */
+    static public function createForPatient(Request $request, $userId)
+    {
+        // Validar que viene el array de exámenes
+        $validated = $request->validate([
+            'exam_ids' => 'required|array',
+            'exam_ids.*' => 'exists:exams,id',
+            'scheduled_date' => 'required|date',
+            'scheduled_time' => 'required|date_format:g:i A'
+        ]);
+
+        // Crear el turno base
+        $appointment = self::create([
+            'user_id' => $userId,
+            'scheduled_date' => $validated['scheduled_date'],
+            'scheduled_time' => Carbon::createFromFormat('g:i A', $validated['scheduled_time'])
+                ->format('H:i:s')
+        ]);
+
+        // Sincronizar los exámenes en la tabla pivote
+        if ($appointment && isset($validated['exam_ids'])) {
+            $appointment->exams()->sync($validated['exam_ids']);
+        }
+
+        return $appointment;
     }
 
     public function scopeAppoiments($query)

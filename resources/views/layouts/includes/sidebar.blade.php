@@ -151,96 +151,69 @@
                         </a>
                     </li>
                 @endhasrole
+                @hasrole('Bioquimico')
+                    <li class="nav-item">
+                        <a class="nav-link {{ Route::is('generic.table') ? 'active' : '' }}"
+                            href="{{ route('generic.table') }}">
+                            <i class="fa fa-tasks menu-icon text-primary"></i>Turnos
+                        </a>
+                    </li>
 
-            </ul>
-            @hasrole('Bioquimico')
-                <li class="nav-item">
-                    <a class="nav-link {{ Route::is('generic.table') ? 'active' : '' }}"
-                        href="{{ route('generic.table') }}">
-                        <i class="fa fa-tasks menu-icon"></i>
-                        <span class="menu-title">Turnos</span>
-                    </a>
-                </li>
-                {{-- <li class="nav-item">
-                    <a class="nav-link collapsed" data-toggle="collapse" href="#page-layouts" aria-expanded="false"
-                        aria-controls="page-layouts">
-                        <i class="fa fa-flask menu-icon"></i>
-                        <span class="menu-title">Examenes</span>
-                        <i class="menu-arrow"></i>
-                    </a>
-                    <div class="collapse" id="page-layouts" style="">
-                        <ul class="nav flex-column sub-menu">
-                            @hasrole('Admin')
-                                <li class="nav-item d-none d-lg-block"> <a
-                                        class="nav-link {{ Route::is('exam') ? 'active' : '' }}"
-                                        href="{{ route('exam') }}">Gestionar
-                                        Examenes</a>
-                                </li>
-                            @endrole
-                            <li class="nav-item"> <a class="nav-link {{ Route::is('exam.create') ? 'active' : '' }}"
-                                    href="{{ route('exam.create') }}">Crear
-                                    resultados</a>
-                            </li>
-                            <li class="nav-item d-none d-lg-block"> <a
-                                    class="nav-link {{ Route::is('results') ? 'active' : '' }}"
-                                    href="{{ route('results') }}">Ver
-                                    resultados</a></li>
-                        </ul>
-                    </div>
-                </li> --}}
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('exam*') || request()->routeIs('results*') ? 'active' : '' }}"
-                        data-toggle="collapse" href="#page-layouts"
-                        aria-expanded="{{ request()->routeIs('exam*') || request()->routeIs('results*') ? 'true' : 'false' }}"
-                        aria-controls="page-layouts">
-                        <i class="fa fa-flask menu-icon"></i>
-                        <span class="menu-title">Exámenes</span>
-                        <i class="menu-arrow"></i>
-                    </a>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('exam*') || request()->routeIs('results*') ? 'active' : '' }}"
+                            data-toggle="collapse" href="#page-layouts"
+                            aria-expanded="{{ request()->routeIs('exam*') || request()->routeIs('results*') ? 'true' : 'false' }}"
+                            aria-controls="page-layouts">
+                            <i class="fa fa-flask menu-icon text-primary"></i>
+                            <span class="menu-title">Exámenes</span>
+                            <i class="menu-arrow"></i>
+                        </a>
 
-                    <div class="collapse {{ request()->routeIs('exam*') || request()->routeIs('results*') ? 'show' : '' }}"
-                        id="page-layouts">
-                        <ul class="nav flex-column sub-menu">
-                            @hasrole('Admin')
+                        <div class="collapse {{ request()->routeIs('exam*') || request()->routeIs('results*') ? 'show' : '' }}"
+                            id="page-layouts">
+                            <ul class="nav flex-column sub-menu">
+                                @hasrole('Admin')
+                                    <li class="nav-item">
+                                        <a class="nav-link {{ request()->routeIs('exam') ? 'active' : '' }}"
+                                            href="{{ route('exam') }}">
+                                            Gestionar Exámenes
+                                        </a>
+                                    </li>
+                                @endhasrole
                                 <li class="nav-item">
-                                    <a class="nav-link {{ request()->routeIs('exam') ? 'active' : '' }}"
-                                        href="{{ route('exam') }}">
-                                        Gestionar Exámenes
+                                    <a class="nav-link {{ request()->routeIs('exam.create') ? 'active' : '' }}"
+                                        href="{{ route('exam.create') }}">
+                                        Crear Resultados
                                     </a>
                                 </li>
-                            @endhasrole
-                            <li class="nav-item">
-                                <a class="nav-link {{ request()->routeIs('exam.create') ? 'active' : '' }}"
-                                    href="{{ route('exam.create') }}">
-                                    Crear Resultados
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link {{ request()->routeIs('results') ? 'active' : '' }}"
-                                    href="{{ route('results') }}">
-                                    Ver Resultados
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {{ request()->routeIs('results') ? 'active' : '' }}"
+                                        href="{{ route('results') }}">
+                                        Ver Resultados
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
 
-            @endrole
-            @hasrole('Paciente')
-                <li class="nav-item">
-                    <a class="nav-link {{ Route::is('appoiment.index') ? 'active' : '' }}"
-                        href="{{ route('appoiment.index') }}">
-                        <i class="fa fa-tasks menu-icon"></i>
-                        <span class="menu-title">Turnos</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ Route::is('results') ? 'active' : '' }}" href="{{ route('results') }}">
-                        <i class="fa fa-flask menu-icon"></i>
-                        <span class="menu-title">Mis Examenes</span>
-                    </a>
-                </li>
-            @endrole
+                @endrole
+                @hasrole('Paciente')
+                    <li class="nav-item active ">
+                        <a class="nav-link  {{ Route::is('appoiment.index') ? 'active' : '' }} "
+                            href="{{ route('appoiment.index') }}">
+                            <i class="fa fa-tasks menu-icon text-primary"></i> Turnos
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link  {{ Route::is('results') ? 'active' : '' }}" href="{{ route('results') }}">
+                            <i class="fa fa-flask menu-icon text-primary"></i> Mis Examenes
+                        </a>
+                    </li>
+
+                @endrole
+
+            </ul>
+
 
         </div>
     </div>

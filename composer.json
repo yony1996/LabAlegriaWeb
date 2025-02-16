@@ -21,6 +21,7 @@
         "yajra/laravel-datatables-oracle": "^9.21"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.7",
         "facade/ignition": "^2.5",
         "laravel-lang/lang": "^10.9",
         "laravel/sail": "^1.0.1",

@@ -8,6 +8,9 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+
 
 class RegisterController extends Controller
 {
@@ -51,14 +54,8 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
-            'gender' => ['required', 'string'],
-            'phone' => ['required', 'string', 'max:255'],
-            'age' => ['required', 'string', 'max:255'],
-            'nui' => ['required', 'string', 'max:10', 'min:10'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users', 'email:rfc,dns'],
             'password' => ['required', 'string', 'min:8'],
-
         ]);
     }
 
@@ -70,28 +67,26 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $path = 'avatar/';
-        $fontPath = public_path('fonts/Oliciy.ttf');
-        $char = strtoupper($data['name'][0]);
-        $newAvatarName = rand(12, 34353) . time() .'_'. $data['last_name'] . '_avatar.png';
-        $dest = $path . $newAvatarName;
+        DB::beginTransaction();
 
-        $createAvatar = makeAvatar($fontPath, $dest, $char);
-        $picture = $createAvatar == true ? $newAvatarName : '';
-        $data['avatar'] = $picture;
-    
-        $user = User::create([
-            'avatar' => $data['avatar'],
-            'name' => $data['name'],
-            'last_name' => $data['last_name'],
-            'gender' => $data['gender'],
-            'phone' => $data['phone'],
-            'age' => $data['age'],
-            'nui' => $data['nui'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
-        $user->assignRole('Paciente');
-        return $user;
+        try {
+            $user = User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+            ]);
+
+            $user->assignRole('Paciente');
+
+            DB::commit();
+
+            return $user;
+        } catch (\Throwable $e) {
+            DB::rollBack();
+            Log::error('Error al crear usuario: ' . $e->getMessage());
+
+            // Opcional: personalizar el mensaje de error
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 }

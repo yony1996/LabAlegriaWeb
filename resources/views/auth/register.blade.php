@@ -1,5 +1,5 @@
-@extends('layouts.loginAdd')
-@section('content')
+@extends('layouts.loginBase')
+{{-- @section('content')
     <div class="auth-form-transparent text-left p-3">
         <div class="brand-logo">
             <img src="{{ asset('dist/images/logo2.png') }}" alt="logo">
@@ -138,4 +138,82 @@
             }
         });
     </script>
+@endsection --}}
+@section('content')
+    <div class="container mt-8 pb-5">
+        <!-- Table -->
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8">
+                <div class="card bg-secondary shadow border-0">
+                    <div class="card-header bg-transparent pb-5 d-flex justify-content-center">
+                        <img src="{{ asset('dist/images/logo2.png') }}" alt="laboratorio alegria"
+                            style="width: 200px; height:80px;">
+                    </div>
+                    <div class="card-body px-lg-5 py-lg-5">
+                        @if (session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
+                        <form class="pt-3" method="POST" action="{{ route('register') }}">
+                            @csrf
+                            <div class="form-group">
+                                <div class="input-group input-group-alternative mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                                    </div>
+                                    <input type="text" name="name"
+                                        class="form-control  @error('name') invalid @enderror form-control-lg"
+                                        value="{{ old('name') }}"placeholder="Nombre">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group input-group-alternative mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                    </div>
+                                    <input type="email" name="email"class="form-control form-control-lg"
+                                        value="{{ old('email') }}" autocomplete="false" placeholder="Correo">
+                                </div>
+                                @error('email')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group input-group-alternative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                    </div>
+                                    <input type="password" class="form-control form-control-lg" name="password"
+                                        placeholder="Contraseña">
+                                </div>
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="row my-4">
+                                <div class="col-12">
+                                    <div class="custom-control custom-control-alternative custom-checkbox">
+                                        <input class="custom-control-input" id="customCheckRegister" type="checkbox">
+                                        <label class="custom-control-label" for="customCheckRegister">
+                                            <span class="text-muted">I agree with the <a href="#!">Privacy
+                                                    Policy</a></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary" id="register">
+                                    Crear Cuenta
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
